@@ -1,0 +1,56 @@
+sql="CREATE TABLE projects(";
+sql+="id INTEGER NOT NULL primary key autoincrement,";
+sql+="crs_description text NOT NULL,";
+sql+="crs_proj4_string text NOT NULL,";
+sql+="epsg_code INTEGER NOT NULL,";
+sql+="height_type text NOT NULL,";
+sql+="grid_size DOUBLE NOT NULL,";
+sql+="type text NOT NULL,";
+sql+="parameters text NOT NULL);";
+  
+sql="CREATE TABLE files (";
+sql+="id INTEGER NOT NULL PRIMARY KEY autoincrement,";
+sql+="file TEXT NOT NULL,";
+sql+="used INTEGER NOT NULL DEFAULT 0);";
+  
+sql="SELECT AddGeometryColumn('lidarfiles','the_geom',#SRID_VALUE#,'polygon', 'xy');";
+  
+sql="CREATE TABLE rois (";
+sql+="id INTEGER NOT NULL PRIMARY KEY autoincrement,";
+sql+="file TEXT NOT NULL,";
+sql+="roi_id TEXT NOT NULL);";
+sql="SELECT AddGeometryColumn('rois','the_geom',#SRID_VALUE#,'polygon', 'xy');";
+  
+sql="CREATE TABLE tiles (";
+sql+="id INTEGER NOT NULL PRIMARY KEY autoincrement,";
+***no sql+="lidar_id INTEGER NOT NULL,";
+sql+="tile_x INTEGER NOT NULL,";
+sql+="tile_y INTEGER NOT NULL,";
+sql+="tile TEXT NOT NULL,";
+sql+="completed INTEGER NOT NULL DEFAULT)";
+
+sql="SELECT AddGeometryColumn('rois_shapefiles','the_geom',#SRID_VALUE#,'polygon', 'xy');";
+
+sql="CREATE TABLE #TILE_X_Y# (";
+sql+="id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,";
+sql+="file_id INTEGER NOT NULL,";
+slq+="file_point_index INTEGER NOT NULL,";
+sql+="roi_id INTEGER NOT NULL,";
+sql+="class INTEGER NOT NULL,";
+sql+="class_original INTEGER NOT NULL,";
+sql+="altitude DOUBLE NOT NULL,";
+sql+="height DOUBLE NOT NULL,";
+sql+="return INTEGER NOT NULL,";
+sql+="returns INTEGER NOT NULL,";
+sql+="remove INTEGER NOT NULL,";
+sql+="red INTEGER NOT NULL DEFAULT 0,";
+sql+="green INTEGER NOT NULL DEFAULT 0,";
+sql+="blue INTEGER NOT NULL DEFAULT 0,";
+sql+="nir INTEGER NOT NULL DEFAULT 0,";
+sql+="intensity INTEGER NOT NULL DEFAULT 0,";
+sql+="source_id INTEGER NOT NULL DEFAULT 0,";
+sql+="gps_time DOUBLE NOT NULL DEFAUTL 0,";
+sql+="CONSTRAINT fk_file_id FOREIGN KEY (file_id) REFERENCES files (id),";
+sql+="CONSTRAINT fk_roi_id FOREIGN KEY (roi_id) REFERENCES rois (id));";
+  
+sql="SELECT AddGeometryColumn(#TILE_X_Y#,'the_geom',#SRID_VALUE#,'point', 'xyz');";

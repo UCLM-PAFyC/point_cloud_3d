@@ -1,0 +1,6 @@
+Point Cloud Database Management Project
+- Number of processes ......................................# 1
+- Process (CREATE_DB,ADD_POINTCLOUD,ADD_ROI,WRITE_PCFS) ....# ADD_POINTCLOUD
+  - Database file name .....................................# "X:/Renieblas/uclm/lidar/ejemplo.sqlite"
+  - File ...................................................# "X:/Renieblas/uclm/lidar/LPC-701_Renieblas_20181211_25830_6cm_200_553800_4630600.laz"
+    CRS (libCRS/EPSG/proj4/wkt) ............................# 25830

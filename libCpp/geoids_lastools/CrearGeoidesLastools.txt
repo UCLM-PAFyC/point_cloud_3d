@@ -1,0 +1,12 @@
+- Pasar de ascii a bil los modelos oficiales del geoide
+gdal_translate -of EHdr EGM08_REDNAP.asc EGM08_REDNAP.bil
+gdal_translate -of EHdr EGM08_REDNAP_Canarias.asc EGM08_REDNAP_Canarias.bil
+- Pasar a laz
+C:\LAStools2019\bin\las2las -v -i EGM08_REDNAP.bil -etrs89 -longlat -target_epsg 25830 -target_precision 0.001 -odix "_25830" -olaz
+C:\LAStools2019\bin\las2las -v -i EGM08_REDNAP.bil -etrs89 -longlat -target_epsg 25829 -target_precision 0.001 -odix "_25829" -olaz
+C:\LAStools2019\bin\las2las -v -i EGM08_REDNAP.bil -etrs89 -longlat -target_epsg 25831 -target_precision 0.001 -odix "_25831" -olaz
+C:\LAStools2019\bin\las2las -v -i EGM08_REDNAP_Canarias.bil -grs80 -longlat -target_epsg 4083 -target_precision 0.001 -odix "_4083" -olaz
+- Ejemplo de uso
+C:\LAStools2019\bin\lasheight64 -v -i zamora.laz -ground_points EGM08_REDNAP_25830.laz -replace_z -olaz -o zamora_ort.laz -all_ground_points
+
+- Da una diferencia inferior a 5 mm con mi programa

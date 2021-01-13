@@ -1,0 +1,7 @@
+Point Cloud Database Management Project
+- Number of processes ......................................# 1
+- Process (CREATE_DB,ADD_POINTCLOUD,ADD_ROI) ...............# ADD_ROI
+  - Database file name .....................................# "X:/Renieblas/uclm/lidar/ejemplo.sqlite"
+  - ROI File ...............................................# "X:/Renieblas/uclm/lidar/Roi.shp"
+    Field id (None for all features ) ......................# None
+      Field id values (separed by ; ignored si None) .......# 

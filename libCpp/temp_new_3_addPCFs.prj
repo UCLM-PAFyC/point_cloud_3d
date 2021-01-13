@@ -1,0 +1,6 @@
+Point Cloud File Management Project
+- Number of processes ......................................# 1
+- Process (CREATE_PCFM,ADD_PCFILE,ADD_ROI,WRITE_PCFS) ......# ADD_PCFILE
+  - PoinCloudFileManager path ..............................# "X:/EjemplosLidarEiffage/zamora/pcfile/zamora_lidar"
+  - File ...................................................# "X:/EjemplosLidarEiffage/zamora/LiDAR_PNOA/PNOA_2010_LOTE4_CYL_298-4628_ORT-CLA-COL.laz"
+    CRS (libCRS/EPSG/proj4/wkt) ............................# 25830

@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="/plugins/point_cloud_3d">
+    <file>icons/mActionSelectFreehand3D.png</file>
+    <file>icons/mActionSelectPolygon3D.png</file>
+    <file>icons/mActionSelectRectangle3D.png</file>
+    <file>icon.png</file>
+    <file>icons/mActionSelectRectangle.png</file>
+    <file>icons/mActionSelectPolygon.png</file>
+    <file>icons/mActionSelectFreehand.png</file>
+  </qresource>
+</RCC>

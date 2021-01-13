@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TRSsAndTransformations>
+	<TRSs>
+		<TRS id="ETRS89" bounds="(-180.0,90.0,180.0,-90.0)">
+			<CRSs>
+				<CRS id="4346" type="ECEF"/>
+				<CRS id="4258" type="Geodetic"/>
+				<CRS id="25829" type="Projected"/>
+				<CRS id="25830" type="Projected"/>
+				<CRS id="25831" type="Projected"/>
+			</CRSs>
+			<GeoidModels>
+				<GeoidModel id="EGM08_REDNAP_PENBAL" file="EGM08_REDNAP.gtx"/>
+			</GeoidModels>
+		</TRS>
+		<TRS id="ETRS89_SPAIN" bounds="(-10.183333333333333,44.444444444444444,4.666666666666667,35.555555555555556)">
+			<CRSs>
+				<CRS id="4346" type="ECEF"/>
+				<CRS id="4258" type="Geodetic"/>
+				<CRS id="25829" type="Projected"/>
+				<CRS id="25830" type="Projected"/>
+				<CRS id="25831" type="Projected"/>
+			</CRSs>
+			<GeoidModels>
+				<GeoidModel id="EGM08_REDNAP_PENBAL" file="EGM08_REDNAP.gtx"/>
+			</GeoidModels>
+		</TRS>
+		<TRS id="REGCAN95" bounds="(-18.2086111111111,27.5830555555556,-13.3163888888889,27.5830555555556)">
+			<CRSs>
+				<CRS id="4079" type="ECEF"/>
+				<CRS id="4081" type="Geodetic"/>
+				<CRS id="4082" type="Projected"/>
+				<CRS id="4083" type="Projected"/>
+			</CRSs>
+			<GeoidModels>
+				<GeoidModel id="EGM08_REDNAP_CAN" file="EGM08_REDNAP_Canarias.gtx"/>
+			</GeoidModels>
+		</TRS>
+		<TRS id="ED50_SPAIN_PENBAL" bounds="(-10.183333333333333,44.444444444444444,4.666666666666667,35.555555555555556)">
+			<CRSs>
+				<CRS id="ED50ECEF" type="ECEF"/>
+				<CRS id="4230" type="Geodetic"/>
+				<CRS id="23029" type="Projected"/>
+				<CRS id="23030" type="Projected"/>
+				<CRS id="23031" type="Projected"/>
+			</CRSs>
+		</TRS>
+	<!--	<TRS id="ED50_SPAIN_CAN" bounds="(-18.2086111111111,27.5830555555556,-13.3163888888889,27.5830555555556)">
+			<CRSs>
+				<CRS id="ED50ECEF" type="ECEF"/>
+				<CRS id="4728" type="Geodetic"/>
+				<CRS id="23027" type="Projected"/> 
+				<CRS id="23028" type="Projected"/>
+			</CRSs>
+		</TRS> -->
+		<TRS id="WGS84" bounds="(-180.0,90.0,180.0,-90.0)">
+			<CRSs>
+				<CRS id="4328" type="ECEF"/>
+				<CRS id="4326" type="Geodetic"/>
+				<CRS id="32601" type="Projected"/>
+				<CRS id="32602" type="Projected"/>
+				<CRS id="32603" type="Projected"/>
+				<CRS id="32604" type="Projected"/>
+				<CRS id="32605" type="Projected"/>
+				<CRS id="32606" type="Projected"/>
+				<CRS id="32607" type="Projected"/>
+				<CRS id="32608" type="Projected"/>
+				<CRS id="32609" type="Projected"/>
+				<CRS id="32610" type="Projected"/>
+				<CRS id="32611" type="Projected"/>
+				<CRS id="32612" type="Projected"/>
+				<CRS id="32613" type="Projected"/>
+				<CRS id="32614" type="Projected"/>
+				<CRS id="32615" type="Projected"/>
+				<CRS id="32616" type="Projected"/>
+				<CRS id="32617" type="Projected"/>
+				<CRS id="32618" type="Projected"/>
+				<CRS id="32619" type="Projected"/>
+				<CRS id="32620" type="Projected"/>
+				<CRS id="32621" type="Projected"/>
+				<CRS id="32622" type="Projected"/>
+				<CRS id="32623" type="Projected"/>
+				<CRS id="32624" type="Projected"/>
+				<CRS id="32625" type="Projected"/>
+				<CRS id="32626" type="Projected"/>
+				<CRS id="32627" type="Projected"/>
+				<CRS id="32628" type="Projected"/>
+				<CRS id="32629" type="Projected"/>
+				<CRS id="32630" type="Projected"/>
+				<CRS id="32631" type="Projected"/>
+				<CRS id="32632" type="Projected"/>
+				<CRS id="32633" type="Projected"/>
+				<CRS id="32634" type="Projected"/>
+				<CRS id="32635" type="Projected"/>
+				<CRS id="32636" type="Projected"/>
+				<CRS id="32637" type="Projected"/>
+				<CRS id="32638" type="Projected"/>
+				<CRS id="32639" type="Projected"/>
+				<CRS id="32640" type="Projected"/>
+				<CRS id="32641" type="Projected"/>
+				<CRS id="32642" type="Projected"/>
+				<CRS id="32643" type="Projected"/>
+				<CRS id="32644" type="Projected"/>
+				<CRS id="32645" type="Projected"/>
+				<CRS id="32646" type="Projected"/>
+				<CRS id="32647" type="Projected"/>
+				<CRS id="32648" type="Projected"/>
+				<CRS id="32649" type="Projected"/>
+				<CRS id="32650" type="Projected"/>
+				<CRS id="32651" type="Projected"/>
+				<CRS id="32652" type="Projected"/>
+				<CRS id="32653" type="Projected"/>
+				<CRS id="32654" type="Projected"/>
+				<CRS id="32655" type="Projected"/>
+				<CRS id="32656" type="Projected"/>
+				<CRS id="32657" type="Projected"/>
+				<CRS id="32658" type="Projected"/>
+				<CRS id="32659" type="Projected"/>
+				<CRS id="32660" type="Projected"/>
+				<CRS id="32701" type="Projected"/>
+				<CRS id="32702" type="Projected"/>
+				<CRS id="32703" type="Projected"/>
+				<CRS id="32704" type="Projected"/>
+				<CRS id="32705" type="Projected"/>
+				<CRS id="32706" type="Projected"/>
+				<CRS id="32707" type="Projected"/>
+				<CRS id="32708" type="Projected"/>
+				<CRS id="32709" type="Projected"/>
+				<CRS id="32710" type="Projected"/>
+				<CRS id="32711" type="Projected"/>
+				<CRS id="32712" type="Projected"/>
+				<CRS id="32713" type="Projected"/>
+				<CRS id="32714" type="Projected"/>
+				<CRS id="32715" type="Projected"/>
+				<CRS id="32716" type="Projected"/>
+				<CRS id="32717" type="Projected"/>
+				<CRS id="32718" type="Projected"/>
+				<CRS id="32719" type="Projected"/>
+				<CRS id="32720" type="Projected"/>
+				<CRS id="32721" type="Projected"/>
+				<CRS id="32722" type="Projected"/>
+				<CRS id="32723" type="Projected"/>
+				<CRS id="32724" type="Projected"/>
+				<CRS id="32725" type="Projected"/>
+				<CRS id="32726" type="Projected"/>
+				<CRS id="32727" type="Projected"/>
+				<CRS id="32728" type="Projected"/>
+				<CRS id="32729" type="Projected"/>
+				<CRS id="32730" type="Projected"/>
+				<CRS id="32731" type="Projected"/>
+				<CRS id="32732" type="Projected"/>
+				<CRS id="32733" type="Projected"/>
+				<CRS id="32734" type="Projected"/>
+				<CRS id="32735" type="Projected"/>
+				<CRS id="32736" type="Projected"/>
+				<CRS id="32737" type="Projected"/>
+				<CRS id="32738" type="Projected"/>
+				<CRS id="32739" type="Projected"/>
+				<CRS id="32740" type="Projected"/>
+				<CRS id="32741" type="Projected"/>
+				<CRS id="32742" type="Projected"/>
+				<CRS id="32743" type="Projected"/>
+				<CRS id="32744" type="Projected"/>
+				<CRS id="32745" type="Projected"/>
+				<CRS id="32746" type="Projected"/>
+				<CRS id="32747" type="Projected"/>
+				<CRS id="32748" type="Projected"/>
+				<CRS id="32749" type="Projected"/>
+				<CRS id="32750" type="Projected"/>
+				<CRS id="32751" type="Projected"/>
+				<CRS id="32752" type="Projected"/>
+				<CRS id="32753" type="Projected"/>
+				<CRS id="32754" type="Projected"/>
+				<CRS id="32755" type="Projected"/>
+				<CRS id="32756" type="Projected"/>
+				<CRS id="32757" type="Projected"/>
+				<CRS id="32758" type="Projected"/>
+				<CRS id="32759" type="Projected"/>
+				<CRS id="32760" type="Projected"/>
+			</CRSs>
+			<GeoidModels>
+				<GeoidModel id="EGM08_WORLD_25" file="egm08_25.gtx"/>
+			</GeoidModels>
+		</TRS>
+	</TRSs>
+	<Transformations>
+		<Transformation id="Ed50_to_ETRS89_Spain_NTv2" type="NTv2" sourceTRS="ED50_SPAIN_PENBAL" targetTRS="ETRS89_SPAIN">
+			<NTv2GridFiles>
+				<NTv2GridFile file="baleares.gsb"/>
+				<NTv2GridFile file="peninsula.gsb"/>
+			</NTv2GridFiles>
+		</Transformation>
+		<Transformation id="ETRS89_Spain_WGS84" type="NTv2" sourceTRS="ETRS89_SPAIN" targetTRS="WGS84">
+			<NTv2GridFiles>
+				<NTv2GridFile file="null"/>
+			</NTv2GridFiles>
+		</Transformation>
+	</Transformations>
+</TRSsAndTransformations>
