@@ -27,6 +27,17 @@
     </Parameter>
     <Parameter>
         <Command>las2dem64</Command>
+        <Code>las2dem64_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>las2dem64</Command>
         <Code>las2dem_class</Code>
         <Enabled>Yes</Enabled>
         <Tag>-keep_class</Tag>
@@ -64,6 +75,49 @@
         <MaximumValue>2.0</MaximumValue>
         <MinimumValue>0.0</MinimumValue>
         <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip64_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_ignore_classes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to keep inside removing area, separated by a space</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_interior</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-interior</Tag>
+        <Type>Empty Text</Type>
+        <Description>To remove inside geometries</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_keep_classes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to keep outside removing area, separated by a space</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
     </Parameter>
     <Parameter>
         <Command>lasclip64</Command>
@@ -106,6 +160,59 @@
         <Description>Report process information in console</Description>
         <PrintSize>100</PrintSize>
         <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight64_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight64_keep_classes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to keep outside removing area, separated by a space</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4 5</Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight64_output_laz</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-olaz</Tag>
+        <Type>Empty Text</Type>
+        <Description>Output format is LAZ</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight64_replace_z</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-replace_z</Tag>
+        <Type>Empty Text</Type>
+        <Description>Replace altitude with height over ground</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile64_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
     </Parameter>
     <Parameter>
         <Command>lastile64</Command>

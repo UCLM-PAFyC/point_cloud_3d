@@ -66,7 +66,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="projectDefinitionPage">
        <property name="geometry">
@@ -902,8 +902,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>554</width>
-         <height>545</height>
+         <width>452</width>
+         <height>471</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1861,7 +1861,7 @@
         <item row="1" column="0">
          <widget class="QTabWidget" name="ppToolsTabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="ppToolsLAStoolsTab">
            <attribute name="title">
@@ -1931,8 +1931,56 @@
           </widget>
           <widget class="QWidget" name="ppToolsCGALTab">
            <attribute name="title">
-            <string>CGAL</string>
+            <string>Internal Tools</string>
            </attribute>
+           <layout class="QGridLayout" name="gridLayout_28">
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_26">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_9">
+                <property name="maximumSize">
+                 <size>
+                  <width>75</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Process:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="2">
+               <widget class="QComboBox" name="ppToolsInternalCommandComboBox"/>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>408</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="2">
+               <widget class="QPushButton" name="ppToolsInternalCommandParametersPushButton">
+                <property name="maximumSize">
+                 <size>
+                  <width>75</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Parameters</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>

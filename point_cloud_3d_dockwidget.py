@@ -409,6 +409,15 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.setText("Select Lastools command")
                 msgBox.exec_()
                 return
+        elif self.ppToolsTabWidget.currentIndex() == 1:
+            command = self.ppToolsInternalCommandComboBox.currentText()
+            if command == PC3DDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Lastools command")
+                msgBox.exec_()
+                return
         if not command:
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
@@ -416,35 +425,50 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setText("Command is None")
             msgBox.exec_()
             return
-        ret = self.iPyProject.pctGetLastoolsCommandStrings(command,
-                                                           inputFiles,
-                                                           outputPath,
-                                                           outputFile,
-                                                           suffixOutputFiles,
-                                                           prefixOutputFiles)
-        if ret[0] == "False":
-            msgBox = QMessageBox(self)
-            msgBox.setIcon(QMessageBox.Information)
-            msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Error:\n"+ret[1])
-            msgBox.exec_()
-            return
-        cont = 0
-        for process in ret:
-            if cont > 0:
-                self.processList.append(ret[cont])
-            cont = cont + 1
-        # strValue = ""
-        # cont = 0
-        # for values in ret:
-        #     if cont > 0:
-        #         strValue += ret[cont]
-        #         strValue += "\n"
-        #     cont = cont + 1
-        # dialog = TextEditDialog()
-        # dialog.setValue(strValue)
-        # dialog.exec_()
-        # text = dialog.getValue()
+        if self.ppToolsTabWidget.currentIndex() == 0: # Lastools command
+            ret = self.iPyProject.pctGetLastoolsCommandStrings(command,
+                                                               inputFiles,
+                                                               outputPath,
+                                                               outputFile,
+                                                               suffixOutputFiles,
+                                                               prefixOutputFiles)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
+            cont = 0
+            for process in ret:
+                if cont > 0:
+                    self.processList.append(ret[cont])
+                cont = cont + 1
+            # strValue = ""
+            # cont = 0
+            # for values in ret:
+            #     if cont > 0:
+            #         strValue += ret[cont]
+            #         strValue += "\n"
+            #     cont = cont + 1
+            # dialog = TextEditDialog()
+            # dialog.setValue(strValue)
+            # dialog.exec_()
+            # text = dialog.getValue()
+        elif self.ppToolsTabWidget.currentIndex() == 1:
+            ret = self.iPyProject.pctpctProcessInternalCommand(command,
+                                                               inputFiles,
+                                                               outputPath,
+                                                               outputFile,
+                                                               suffixOutputFiles,
+                                                               prefixOutputFiles)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
         return
 
     def addProject(self):
@@ -915,6 +939,18 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.ppToolsOPCFsSuffixPushButton.clicked.connect(self.selectPpToolsOutpufFilesSuffix)
         self.ppToolsOPCFsPrefixPushButton.clicked.connect(self.selectPpToolsOutpufFilesPrefix)
 
+        self.internalCommands = self.iPyProject.pctGetInternalCommands()
+        self.ppToolsInternalCommandComboBox.addItem(PC3DDefinitions.CONST_NO_COMBO_SELECT)
+        for internalCommand in self.internalCommands:
+            self.ppToolsInternalCommandComboBox.addItem(internalCommand)
+        self.ppToolsInternalCommandComboBox.currentIndexChanged.connect(self.selectInternalCommand)
+        self.selectInternalCommand()
+        self.ppToolsInternalCommandParametersPushButton.setEnabled(False)
+        self.ppToolsInternalCommandParametersPushButton.clicked.connect(self.selectInternalCommandParameters)
+
+        self.ppToolsTabWidget.currentChanged.connect(self.ppToolsTabWidgetChanged)
+        self.ppToolsTabWidget.setCurrentIndex(0)
+
 
         ###################################################
         # Project Management Page
@@ -1383,6 +1419,17 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # # msgBox.exec_()
         return
 
+    def ppToolsTabWidgetChanged(self,i):
+        if i==0:
+            self.addProcessToListPushButton.setVisible(True)
+            self.processListEditionPushButton.setVisible(True)
+            self.runProcessListPushButton.setText("Run Process List")
+        if i==1:
+            self.addProcessToListPushButton.setVisible(False)
+            self.processListEditionPushButton.setVisible(False)
+            self.runProcessListPushButton.setText("Run Process")
+        return
+
     def processListEdition(self):
         previousProcessList = self.processList[:] # copia desligada
         dlg = ProcessListEditonDialog(PC3DDefinitions.CONST_PROCESS_LIST_EDITION_DIALOG_TITLE,
@@ -1596,6 +1643,38 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.altitudeDifferenceLineEdit.setText("{:.3f}".format(altitude_diff))
         return
 
+    def selectInternalCommand(self):
+        self.ppToolsOPCFsOutputFilePushButton.setEnabled(False)
+        self.ppToolsOPCFsOutputFileLineEdit.setText("")
+        self.ppToolsOPCFsOutputPathPushButton.setEnabled(False)
+        self.ppToolsOPCFsOutputPathLineEdit.setText("")
+        self.ppToolsOPCFsSuffixPushButton.setEnabled(False)
+        self.ppToolsOPCFsSuffixLineEdit.setText("")
+        self.ppToolsOPCFsPrefixPushButton.setEnabled(False)
+        self.ppToolsOPCFsPrefixLineEdit.setText("")
+        internalCommand = self.ppToolsInternalCommandComboBox.currentText()
+        if internalCommand == PC3DDefinitions.CONST_NO_COMBO_SELECT:
+            self.ppToolsInternalCommandParametersPushButton.setEnabled(False)
+            return
+        ret = self.iPyProject.pctGetInternalCommandsOutputDataFormat(internalCommand)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        if ret[1] == "True":
+            self.ppToolsOPCFsOutputPathPushButton.setEnabled(True)
+        if ret[2] == "True":
+            self.ppToolsOPCFsOutputFilePushButton.setEnabled(True)
+        if ret[3] == "True":
+            self.ppToolsOPCFsSuffixPushButton.setEnabled(True)
+        if ret[4] == "True":
+            self.ppToolsOPCFsPrefixPushButton.setEnabled(True)
+        self.ppToolsInternalCommandParametersPushButton.setEnabled(True)
+        return
+
     def selectLastoolsCommand(self):
         self.ppToolsOPCFsOutputFilePushButton.setEnabled(False)
         self.ppToolsOPCFsOutputFileLineEdit.setText("")
@@ -1626,6 +1705,9 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         if ret[4] == "True":
             self.ppToolsOPCFsPrefixPushButton.setEnabled(True)
         self.ppToolsLastoolsCommandParametersPushButton.setEnabled(True)
+        return
+
+    def selectInternalCommandParameters(self):
         return
 
     def selectLastoolsCommandParameters(self):
