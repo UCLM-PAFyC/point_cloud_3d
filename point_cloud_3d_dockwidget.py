@@ -411,15 +411,15 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.setText("Select Lastools command")
                 msgBox.exec_()
                 return
-        elif self.ppToolsTabWidget.currentIndex() == 1:
-            command = self.ppToolsInternalCommandComboBox.currentText()
-            if command == PC3DDefinitions.CONST_NO_COMBO_SELECT:
-                msgBox = QMessageBox(self)
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("Select Lastools command")
-                msgBox.exec_()
-                return
+        # elif self.ppToolsTabWidget.currentIndex() == 1:
+        #     command = self.ppToolsInternalCommandComboBox.currentText()
+        #     if command == PC3DDefinitions.CONST_NO_COMBO_SELECT:
+        #         msgBox = QMessageBox(self)
+        #         msgBox.setIcon(QMessageBox.Information)
+        #         msgBox.setWindowTitle(self.windowTitle)
+        #         msgBox.setText("Select Lastools command")
+        #         msgBox.exec_()
+        #         return
         if not command:
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
@@ -457,20 +457,20 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             # dialog.setValue(strValue)
             # dialog.exec_()
             # text = dialog.getValue()
-        elif self.ppToolsTabWidget.currentIndex() == 1:
-            ret = self.iPyProject.pctpctProcessInternalCommand(command,
-                                                               inputFiles,
-                                                               outputPath,
-                                                               outputFile,
-                                                               suffixOutputFiles,
-                                                               prefixOutputFiles)
-            if ret[0] == "False":
-                msgBox = QMessageBox(self)
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("Error:\n" + ret[1])
-                msgBox.exec_()
-                return
+        # elif self.ppToolsTabWidget.currentIndex() == 1:
+        #     ret = self.iPyProject.pctpctProcessInternalCommand(command,
+        #                                                        inputFiles,
+        #                                                        outputPath,
+        #                                                        outputFile,
+        #                                                        suffixOutputFiles,
+        #                                                        prefixOutputFiles)
+        #     if ret[0] == "False":
+        #         msgBox = QMessageBox(self)
+        #         msgBox.setIcon(QMessageBox.Information)
+        #         msgBox.setWindowTitle(self.windowTitle)
+        #         msgBox.setText("Error:\n" + ret[1])
+        #         msgBox.exec_()
+        #         return
         return
 
     def addProject(self):
@@ -1425,11 +1425,11 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         if i==0:
             self.addProcessToListPushButton.setVisible(True)
             self.processListEditionPushButton.setVisible(True)
-            self.runProcessListPushButton.setText("Run Process List")
+            self.runProcessListPushButton.setText(PC3DDefinitions.CONST_PROCESSING_TOOLS_RUN_BUTTON_PROCESS_LIST_TEXT)
         if i==1:
             self.addProcessToListPushButton.setVisible(False)
             self.processListEditionPushButton.setVisible(False)
-            self.runProcessListPushButton.setText("Run Process")
+            self.runProcessListPushButton.setText(PC3DDefinitions.CONST_PROCESSING_TOOLS_RUN_BUTTON_PROCESS_TEXT)
         return
 
     def processListEdition(self):
@@ -1710,6 +1710,21 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
     def selectInternalCommandParameters(self):
+        internalCommand = self.ppToolsInternalCommandComboBox.currentText()
+        if internalCommand == PC3DDefinitions.CONST_NO_COMBO_SELECT:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select internal command before")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.pctSelectInternalCommandParameters(internalCommand)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
         return
 
     def selectLastoolsCommandParameters(self):
@@ -2099,7 +2114,7 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
     def selectPpToolsOutputFile(self):
         oldFileName=self.ppToolsOPCFsOutputFileLineEdit.text()
         title="Select preprocessing tools output file"
-        filters="Point Cloud File (*."
+        filters="Point Cloud File, Image File, Txt File (*."
         cont = 0
         for fileType in self.pointCloudFilesFileTypes:
             filters+=fileType
@@ -2107,6 +2122,7 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             if cont < len(self.pointCloudFilesFileTypes):
                 filters+=";*."
         filters += ";*.tif"
+        filters += ";*.txt"
         filters+=")"
         fileName, _ = QFileDialog.getSaveFileName(self,title,self.path,filters)
         if fileName:
@@ -2434,29 +2450,105 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
     def runProcessList(self):
-        if len(self.processList) == 0:
+        ret=[]
+        if self.ppToolsTabWidget.currentIndex() == 0:
+            if len(self.processList) == 0:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Process list is empty")
+                msgBox.exec_()
+                return
+            title = PC3DDefinitions.CONST_RUN_PROCESS_LIST_DIALOG_TITLE
+            ret = self.iPyProject.pctRunProcessList(self.processList, title)
+        elif self.ppToolsTabWidget.currentIndex() == 1:
+            command = self.ppToolsInternalCommandComboBox.currentText()
+            if command == PC3DDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select internal command before")
+                msgBox.exec_()
+                return
+            crs = self.ppToolsIPCFsQgsProjectionSelectionWidget.crs()
+            isValidCrs = crs.isValid()
+            crsAuthId = crs.authid()
+            if not "EPSG:" in crsAuthId:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Selected CRS is not EPSG")
+                msgBox.exec_()
+                return
+            crsEpsgCode = int(crsAuthId.replace('EPSG:', ''))
+            crsOsr = osr.SpatialReference()  # define test1
+            if crsOsr.ImportFromEPSG(crsEpsgCode) != 0:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error importing OSR CRS from EPSG code" + str(crsEpsgCode))
+                msgBox.exec_()
+                return
+            if not crsOsr.IsProjected():
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Selected CRS is not a projected CRS")
+                msgBox.exec_()
+                return
+            altitudeIsMsl = True
+            if self.ppToolsIPCFsAltitudeEllipsoidRadioButton.isChecked():
+                altitudeIsMsl = False
+            inputFiles = self.postprocessingIPCFs
+            if len(inputFiles) == 0:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select input files")
+                msgBox.exec_()
+                return
+            outputFile = self.ppToolsOPCFsOutputFileLineEdit.text()
+            outputPath = self.ppToolsOPCFsOutputPathLineEdit.text()
+            suffixOutputFiles = self.ppToolsOPCFsSuffixLineEdit.text()
+            prefixOutputFiles = self.ppToolsOPCFsPrefixLineEdit.text()
+            # ¿se puede ignorar para algunos procesos si hay varios ficheros de entrada? lasmerge ...
+            # tengo que definir en un contenedor aquellos comandos que lo permiten
+            # if len(inputFiles) > 1 and outputFile:
+            #     if self.ppToolsOPCFsOutputPathPushButton.isEnabled():
+            #         if not outputPath and not suffixOutputFiles:
+            #             msgBox = QMessageBox(self)
+            #             msgBox.setIcon(QMessageBox.Information)
+            #             msgBox.setWindowTitle(self.windowTitle)
+            #             msgBox.setText("Select output path or suffix for several input files")
+            #             msgBox.exec_()
+            #             return
+            # if not outputFile and not outputPath and not suffixOutputFiles:
+            if not outputFile and not outputPath:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select output file or output path")
+                msgBox.exec_()
+                return
+            ret = self.iPyProject.pctProcessInternalCommand(command,
+                                                            inputFiles,
+                                                            outputPath,
+                                                            outputFile,
+                                                            suffixOutputFiles,
+                                                            prefixOutputFiles)
+        if ret[0] == "False":
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Process list is empty")
+            msgBox.setText("Error:\n"+ret[1])
             msgBox.exec_()
             return
-        title = PC3DDefinitions.CONST_RUN_PROCESS_LIST_DIALOG_TITLE
-        ret = self.iPyProject.pctRunProcessList(self.processList, title)
-        # if ret[0] == "False":
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Error:\n"+ret[1])
-        #     msgBox.exec_()
-        #     return
-        # else:
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Process completed successfully")
-        #     msgBox.exec_()
-        # return
+        else:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Process completed successfully")
+            msgBox.exec_()
         return
 
     def selectAllClasses(self):
