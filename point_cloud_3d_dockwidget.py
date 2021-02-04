@@ -2450,7 +2450,6 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
     def runProcessList(self):
-        ret=[]
         if self.ppToolsTabWidget.currentIndex() == 0:
             if len(self.processList) == 0:
                 msgBox = QMessageBox(self)
@@ -2536,19 +2535,20 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                                                             outputFile,
                                                             suffixOutputFiles,
                                                             prefixOutputFiles)
-        if ret[0] == "False":
-            msgBox = QMessageBox(self)
-            msgBox.setIcon(QMessageBox.Information)
-            msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Error:\n"+ret[1])
-            msgBox.exec_()
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n"+ret[1])
+                msgBox.exec_()
+                return
+            else:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Process completed successfully")
+                msgBox.exec_()
             return
-        else:
-            msgBox = QMessageBox(self)
-            msgBox.setIcon(QMessageBox.Information)
-            msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Process completed successfully")
-            msgBox.exec_()
         return
 
     def selectAllClasses(self):
