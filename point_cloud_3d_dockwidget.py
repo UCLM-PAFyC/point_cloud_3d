@@ -1444,6 +1444,11 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.processList.append(process)
         return
 
+    def refreshMapCanvas(self):
+        currentScale = self.iface.mapCanvas().scale()
+        newScale = currentScale * 1.001
+        self.iface.mapCanvas().zoomScale(newScale)
+
     def removeGroup(self,root,name):
         # root = QgsProject.instance().layerTreeRoot()
         group = root.findGroup(name)

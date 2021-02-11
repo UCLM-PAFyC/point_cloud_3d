@@ -34,7 +34,7 @@
         <Description>Spatial resolution for analysis, integer in meters</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>2</Value>
+        <Value>10</Value>
         <MaximumValue>100</MaximumValue>
         <MinimumValue>1</MinimumValue>
     </Parameter>
