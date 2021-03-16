@@ -1,7 +1,11 @@
 Point Cloud File Management Project
 - Number of processes ......................................# 1
 - Process (CREATE_PCFM,ADD_PCFILE,ADD_ROI,WRITE_PCFS) ......# ADD_PCFILES
-  - PoinCloudFileManager path ..............................# "C:/PointCloud3DPlugin/dhl/pc3d"
+  - PoinCloudFileManager path ..............................# "D:/PointCloud3DProjects/IndustrialParkCampollanoAB/pc3d_lidar_rgb_2009"
   - CRS (libCRS/EPSG/proj4/wkt) ............................# 25830
-  - Number of files ........................................# 1
-  - File ...................................................# "C:/PointCloud3DPlugin/dhl/PNOA_2009_Lote5_CLM_596-4320_ORT-CLA-COL.LAZ"
+  - Number of files ........................................# 5
+  - File ...................................................# "D:/PointCloud3DProjects/IndustrialParkCampollanoAB/data/lidar_2009/PNOA_2009_Lote5_CLM_594-4320_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IndustrialParkCampollanoAB/data/lidar_2009/PNOA_2009_Lote5_CLM_594-4322_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IndustrialParkCampollanoAB/data/lidar_2009/PNOA_2009_Lote5_CLM_596-4320_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IndustrialParkCampollanoAB/data/lidar_2009/PNOA_2009_Lote5_CLM_596-4322_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IndustrialParkCampollanoAB/data/lidar_2009/PNOA_2009_Lote5_CLM_598-4320_ORT-CLA-COL.laz"

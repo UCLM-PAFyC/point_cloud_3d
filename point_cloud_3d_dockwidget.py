@@ -973,11 +973,14 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.removeProjectPushButton.clicked.connect(self.removeProject)
 
         # Project types
-        self.projecTypes = self.iPyProject.pctGetProjectTypes()
-        self.projectTypeComboBox.addItem(PC3DDefinitions.CONST_NO_COMBO_SELECT)
-        for projectType in self.projecTypes:
+        self.projectTypes = self.iPyProject.pctGetProjectTypes()
+        if len(self.projectTypes) > 1:
+            self.projectTypeComboBox.addItem(PC3DDefinitions.CONST_NO_COMBO_SELECT)
+        for projectType in self.projectTypes:
             self.projectTypeComboBox.addItem(projectType)
         self.projectTypeComboBox.currentIndexChanged.connect(self.selectProjectType)
+        if len(self.projectTypes) == 1:
+            self.projectTypeComboBox.setEnabled(False)
 
         # Grid sizes
         gridSizes = self.iPyProject.pctGetGridSizes()
@@ -1371,6 +1374,10 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             self.projectsComboBox.setCurrentIndex(0)
             return
+        msgBox = QMessageBox(self)
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setWindowTitle(self.windowTitle)
+        strText = ''
         self.maximumDensity = ret[1]
         if self.maximumDensity > 0:
             dblMinimumScale = 1000.0/sqrt(self.maximumDensity)*PC3DDefinitions.CONST_POINTS_BY_MILIMETER
@@ -1381,13 +1388,12 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                     break
             if self.minimumScale < self.minimumValueForMinimumScale:
                 self.minimumScale = self.minimumValueForMinimumScale
+            strText = "Maximum density: " + str(self.maximumDensity)
+            strText += "\nMinimum scale: 1/" + str(self.minimumScale)
         else:
             self.minimumScale = self.scales[0]
-        msgBox = QMessageBox(self)
-        msgBox.setIcon(QMessageBox.Information)
-        msgBox.setWindowTitle(self.windowTitle)
-        strText = "Maximum density: " + str(ret[1])
-        strText += "\nMinimum scale: 1/" + str(self.minimumScale)
+            strText = "There are no points in the project"
+            strText += "\nMinimum scale: 1/" + str(self.minimumScale)
         msgBox.setText(strText)
         msgBox.exec_()
         self.projectPath = projectPath

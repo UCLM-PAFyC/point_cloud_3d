@@ -22,6 +22,9 @@
     <height>700</height>
    </size>
   </property>
+  <property name="toolTip">
+   <string/>
+  </property>
   <property name="windowTitle">
    <string>Point Cloud 3D</string>
   </property>
@@ -38,6 +41,9 @@
       </item>
       <item>
        <widget class="QCheckBox" name="multiThreadingCheckBox">
+        <property name="toolTip">
+         <string>Activate multithreading speed up some process but can failt in some hardware arquitectures</string>
+        </property>
         <property name="text">
          <string>Multithreading</string>
         </property>
@@ -66,7 +72,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="projectDefinitionPage">
        <property name="geometry">
@@ -119,7 +125,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="projectTypeComboBox"/>
+               <widget class="QComboBox" name="projectTypeComboBox">
+                <property name="toolTip">
+                 <string>Only &quot;Generic&quot; in this plugin version</string>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="QLabel" name="label">
@@ -135,8 +145,11 @@
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>Size of square tiles for memory layers</string>
+                </property>
                 <property name="text">
-                 <string>Grid Size (m):</string>
+                 <string>Tile Size (m):</string>
                 </property>
                </widget>
               </item>
@@ -154,6 +167,9 @@
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>Lower for higher point density</string>
+                </property>
                </widget>
               </item>
               <item>
@@ -169,6 +185,9 @@
                   <width>75</width>
                   <height>16777215</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>Select points attributes to load</string>
                 </property>
                 <property name="text">
                  <string>Parameters</string>
@@ -206,6 +225,9 @@
                   <height>0</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>Select a projected CRS</string>
+                </property>
                </widget>
               </item>
               <item>
@@ -221,6 +243,9 @@
                   <width>45</width>
                   <height>16777215</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>Ignored in this plugin version</string>
                 </property>
                 <property name="text">
                  <string>Altitude:</string>
@@ -298,6 +323,9 @@
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="toolTip">
+                 <string>Select existing path for store the project</string>
+                </property>
                 <property name="text">
                  <string>Path</string>
                 </property>
@@ -323,6 +351,9 @@
                   <width>50</width>
                   <height>16777215</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>Select region of interest for the project, defined by a polygon in shapefile format. Outside points will be ignored</string>
                 </property>
                 <property name="text">
                  <string>ROIs:</string>
@@ -381,6 +412,9 @@
                   <width>75</width>
                   <height>16777215</height>
                  </size>
+                </property>
+                <property name="toolTip">
+                 <string>Create the project with selected options</string>
                 </property>
                 <property name="text">
                  <string>Create</string>
@@ -776,6 +810,9 @@
          <layout class="QGridLayout" name="gridLayout_13">
           <item row="0" column="0">
            <widget class="QPushButton" name="pmTemporalPathPushButton">
+            <property name="toolTip">
+             <string>Select path to created auxilar files</string>
+            </property>
             <property name="text">
              <string>Temp Path</string>
             </property>
@@ -790,6 +827,9 @@
           </item>
           <item row="1" column="0">
            <widget class="QPushButton" name="pmOutputPathPushButton">
+            <property name="toolTip">
+             <string>Select path to report files</string>
+            </property>
             <property name="text">
              <string>Output Path</string>
             </property>
@@ -814,6 +854,9 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>Add existing project from its folder</string>
+            </property>
             <property name="text">
              <string>Add</string>
             </property>
@@ -826,6 +869,9 @@
               <width>150</width>
               <height>0</height>
              </size>
+            </property>
+            <property name="toolTip">
+             <string>Select existing project</string>
             </property>
            </widget>
           </item>
@@ -842,6 +888,9 @@
               <width>50</width>
               <height>16777215</height>
              </size>
+            </property>
+            <property name="toolTip">
+             <string>Open selected project</string>
             </property>
             <property name="text">
              <string>Open</string>
@@ -862,6 +911,9 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>Close opened project</string>
+            </property>
             <property name="text">
              <string>Close</string>
             </property>
@@ -874,6 +926,9 @@
               <width>60</width>
               <height>16777215</height>
              </size>
+            </property>
+            <property name="toolTip">
+             <string>Remove selected project</string>
             </property>
             <property name="text">
              <string>Remove</string>
@@ -1684,8 +1739,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>554</width>
-         <height>545</height>
+         <width>467</width>
+         <height>392</height>
         </rect>
        </property>
        <attribute name="label">
