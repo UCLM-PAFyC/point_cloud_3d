@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>572</width>
+    <width>573</width>
     <height>696</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>572</width>
+    <width>573</width>
     <height>696</height>
    </size>
   </property>
@@ -49,6 +49,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="aboutPushButton">
+        <property name="text">
+         <string>About</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item row="1" column="0">
@@ -72,15 +79,15 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="projectDefinitionPage">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>554</width>
-         <height>545</height>
+         <width>555</width>
+         <height>538</height>
         </rect>
        </property>
        <attribute name="label">
@@ -928,7 +935,7 @@
              </size>
             </property>
             <property name="toolTip">
-             <string>Remove selected project</string>
+             <string>Remove selected project (does not delete data)</string>
             </property>
             <property name="text">
              <string>Remove</string>
@@ -957,8 +964,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>452</width>
-         <height>471</height>
+         <width>555</width>
+         <height>538</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1457,6 +1464,9 @@
                  <bold>false</bold>
                 </font>
                </property>
+               <property name="toolTip">
+                <string>Load tiles showed in map canvas</string>
+               </property>
                <property name="text">
                 <string>Load Tiles </string>
                </property>
@@ -1475,6 +1485,9 @@
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
+               </property>
+               <property name="toolTip">
+                <string>Unload loaded tiles</string>
                </property>
                <property name="text">
                 <string>Unload Tiles</string>
@@ -1602,7 +1615,7 @@
             <widget class="QPushButton" name="view3dMapCanvasPushButton">
              <property name="minimumSize">
               <size>
-               <width>170</width>
+               <width>160</width>
                <height>0</height>
               </size>
              </property>
@@ -1612,8 +1625,11 @@
                <bold>false</bold>
               </font>
              </property>
+             <property name="toolTip">
+              <string>Load in 3D viewer tiles showed in map canvas</string>
+             </property>
              <property name="text">
-              <string>Map Canvas to 3D View </string>
+              <string>3D View from Map Canvas </string>
              </property>
             </widget>
            </item>
@@ -1636,7 +1652,7 @@
               <widget class="QLabel" name="label_13">
                <property name="minimumSize">
                 <size>
-                 <width>40</width>
+                 <width>120</width>
                  <height>20</height>
                 </size>
                </property>
@@ -1647,7 +1663,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Select area by:</string>
+                <string> ... or 3D view from:</string>
                </property>
               </widget>
              </item>
@@ -1739,8 +1755,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>467</width>
-         <height>392</height>
+         <width>555</width>
+         <height>538</height>
         </rect>
        </property>
        <attribute name="label">

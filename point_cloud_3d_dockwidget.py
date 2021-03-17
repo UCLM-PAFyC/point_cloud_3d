@@ -46,6 +46,7 @@ from qgis.core import QgsApplication, QgsDataSourceUri
 # from processListEditionDialog.process_list_edition_dialog import *
 # import PCTDefinitions
 
+from .point_cloud_3d_about_qdialog import AboutQDialog
 from .multipleFileSelectorDialog.multiple_file_selector_dialog import * #panel nueva camara
 from .processListEditionDialog.process_list_edition_dialog import *
 from . import PC3DDefinitions
@@ -785,6 +786,8 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.settings = QSettings(path_file_qsettings,QSettings.IniFormat)
 
         qs = QSettings()
+        self.about_qdialog = None
+        self.aboutPushButton.clicked.connect(self.showAboutDlg)
 
         # template path que cuelga del directorio de este fichero
         pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
@@ -2376,6 +2379,11 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.roisFilesActiveFileExtensions = dlg.getActiveFileExtensions()
         self.numberOfRoisLineEdit.setText(str(len(self.roisShapefiles)))
         return
+
+    def showAboutDlg(self):
+        if self.about_qdialog == None:
+            self.about_qdialog = AboutQDialog()
+        self.about_qdialog.show()
 
     def toClass0(self):
         newClass = 0
