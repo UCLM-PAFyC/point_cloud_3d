@@ -1810,6 +1810,14 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setText("Error:\n" + ret[1])
             msgBox.exec_()
             return
+        if ret[1] == 0:
+            text = "There are no new tiles to load"
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
         numberOfNotLoadedTiles = 0
         numberOfLoadedTiles = len(self.loadedTiles)
         initialTileNames = ret[2]
@@ -1823,7 +1831,7 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Error:\n" + ret[1])
+            msgBox.setText(text)
             msgBox.exec_()
             return
         if numberOfNotLoadedTiles > 0:
@@ -2717,17 +2725,6 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         progress.close()
 
     def view3DSelectedPoints(self):
-        if len(self.loadedTiles) > 0:
-            text = "There are " + str(len(self.loadedTiles))
-            text += "\ntiles loaded in Map Canvas"
-            text += "\nand the process could be slow."
-            text += "\n\nDo you wish unload from map canvas these tiles and continue?"
-            reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
-                                         text, QMessageBox.Yes, QMessageBox.No)
-            if reply == QMessageBox.Yes:
-                self.unloadAllTiles()
-            else:
-                return
         loadFullTiles = False
         loadFullTiles = self.fullTiles3dCheckBox.isChecked()
         wktGeom = None
@@ -2776,6 +2773,25 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.exec_()
                 return
             numberOfTiles = ret[1]
+            if numberOfTiles == 0:
+                text = "There are no new tiles to load"
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText(text)
+                msgBox.exec_()
+                return
+            if len(self.loadedTiles) > 0:
+                text = "There are " + str(len(self.loadedTiles))
+                text += "\ntiles loaded in Map Canvas"
+                text += "\nand the process could be slow."
+                text += "\n\nDo you wish unload from map canvas these tiles and continue?"
+                reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
+                                             text, QMessageBox.Yes, QMessageBox.No)
+                if reply == QMessageBox.Yes:
+                    self.unloadAllTiles()
+                else:
+                    return
             # tilesNames =ret[2]
             if PC3DDefinitions.CONST_MAX_POINT_TILES > 0:
                 if numberOfTiles > PC3DDefinitions.CONST_MAX_POINT_TILES:
@@ -2816,17 +2832,6 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
     def view3dMapCanvas(self):
-        if len(self.loadedTiles) > 0:
-            text = "There are " + str(len(self.loadedTiles))
-            text += "\ntiles loaded in Map Canvas"
-            text += "\nand the process could be slow."
-            text += "\n\nDo you wish unload from map canvas these tiles and continue?"
-            reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
-                                         text, QMessageBox.Yes, QMessageBox.No)
-            if reply == QMessageBox.Yes:
-                self.unloadAllTiles()
-            else:
-                return
         loadFullTiles = True
         mapCanvasExtend = self.iface.mapCanvas().extent()
         maxFc = mapCanvasExtend.xMaximum()
@@ -2857,6 +2862,25 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         numberOfTiles = ret[1]
+        if numberOfTiles == 0:
+            text = "There are no new tiles to load"
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        if len(self.loadedTiles) > 0:
+            text = "There are " + str(len(self.loadedTiles))
+            text += "\ntiles loaded in Map Canvas"
+            text += "\nand the process could be slow."
+            text += "\n\nDo you wish unload from map canvas these tiles and continue?"
+            reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
+                                         text, QMessageBox.Yes, QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                self.unloadAllTiles()
+            else:
+                return
         # tilesNames =ret[2]
         if PC3DDefinitions.CONST_MAX_POINT_TILES > 0:
             if numberOfTiles > PC3DDefinitions.CONST_MAX_POINT_TILES:
