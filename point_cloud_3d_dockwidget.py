@@ -1811,23 +1811,42 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         numberOfNotLoadedTiles = 0
+        numberOfLoadedTiles = len(self.loadedTiles)
         initialTileNames = ret[2]
         for tileX in initialTileNames:
             for tileY in initialTileNames[tileX]:
                 tileName = initialTileNames[tileX][tileY]
                 if not tileName in self.loadedTiles:
                     numberOfNotLoadedTiles= numberOfNotLoadedTiles + 1
+        if numberOfNotLoadedTiles == 0:
+            text = "There are no tiles to load"
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
         if numberOfNotLoadedTiles > 0:
             numberOfTiles = ret[1]
             # tilesNames =ret[2]
-            if PC3DDefinitions.CONST_WARNING_MAX_POINT_TILES > 0:
-                if numberOfTiles > PC3DDefinitions.CONST_WARNING_MAX_POINT_TILES:
-                    text = str(numberOfTiles) + " tiles will be loaded"
-                    text += "\n\nContinue?"
-                    reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
-                                                 text, QMessageBox.Yes, QMessageBox.No)
-                    if reply == QMessageBox.No:
-                        return
+            numberOfTotalTiles = numberOfNotLoadedTiles + numberOfLoadedTiles
+            if PC3DDefinitions.CONST_MAX_POINT_TILES > 0:
+                if numberOfTotalTiles > PC3DDefinitions.CONST_MAX_POINT_TILES:
+                    text = "The number of tiles to load is limited to "
+                    text += str(PC3DDefinitions.CONST_MAX_POINT_TILES)
+                    text += "\nto avoid performance problems"
+                    msgBox = QMessageBox(self)
+                    msgBox.setIcon(QMessageBox.Information)
+                    msgBox.setWindowTitle(self.windowTitle)
+                    msgBox.setText(text)
+                    msgBox.exec_()
+                    # text = str(numberOfTiles) + " tiles will be loaded"
+                    # text += "\n\nContinue?"
+                    # reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
+                    #                              text, QMessageBox.Yes, QMessageBox.No)
+                    # if reply == QMessageBox.No:
+                    #     return
+                    return
             ret = self.iPyProject.pctGetPointsFromWktGeometry(self.projectPath,
                                                              mapCanvasWkt,
                                                              projectCrsEpsgCode,
@@ -2702,11 +2721,13 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             text = "There are " + str(len(self.loadedTiles))
             text += "\ntiles loaded in Map Canvas"
             text += "\nand the process could be slow."
-            text += "\n\nDo you wish unload from map canvas these tiles?"
+            text += "\n\nDo you wish unload from map canvas these tiles and continue?"
             reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
                                          text, QMessageBox.Yes, QMessageBox.No)
             if reply == QMessageBox.Yes:
                 self.unloadAllTiles()
+            else:
+                return
         loadFullTiles = False
         loadFullTiles = self.fullTiles3dCheckBox.isChecked()
         wktGeom = None
@@ -2736,6 +2757,43 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.iface.mapCanvas().unsetMapTool(self.toolFreehand3D)
             self.toolButton_SelectByFreehand_3D.setChecked(False)
         if wktGeom:
+            projectCrs = QgsProject.instance().crs()
+            projectCrsEpsgCode = -1
+            projectCrsProj4 = ""
+            projectCrsAuthId = projectCrs.authid()
+            if "EPSG" in projectCrsAuthId:
+                projectCrsEpsgCode = int(projectCrsAuthId.replace("EPSG:", ""))
+            projectCrsProj4 = projectCrs.toProj4()
+            ret = self.iPyProject.pctGetTilesFromWktGeometry(self.projectPath,
+                                                             wktGeom,
+                                                             projectCrsEpsgCode,
+                                                             projectCrsProj4)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
+            numberOfTiles = ret[1]
+            # tilesNames =ret[2]
+            if PC3DDefinitions.CONST_MAX_POINT_TILES > 0:
+                if numberOfTiles > PC3DDefinitions.CONST_MAX_POINT_TILES:
+                    text = "The number of tiles to load is limited to "
+                    text += str(PC3DDefinitions.CONST_MAX_POINT_TILES)
+                    text += "\nto avoid performance problems"
+                    msgBox = QMessageBox(self)
+                    msgBox.setIcon(QMessageBox.Information)
+                    msgBox.setWindowTitle(self.windowTitle)
+                    msgBox.setText(text)
+                    msgBox.exec_()
+                    # text = str(numberOfTiles) + " tiles will be loaded"
+                    # text += "\n\nContinue?"
+                    # reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
+                    #                              text, QMessageBox.Yes, QMessageBox.No)
+                    # if reply == QMessageBox.No:
+                    #     return
+                    return
             self.view3D(wktGeom,loadFullTiles)
         return
 
@@ -2762,11 +2820,13 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             text = "There are " + str(len(self.loadedTiles))
             text += "\ntiles loaded in Map Canvas"
             text += "\nand the process could be slow."
-            text += "\n\nDo you wish unload from map canvas these tiles?"
+            text += "\n\nDo you wish unload from map canvas these tiles and continue?"
             reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
                                          text, QMessageBox.Yes, QMessageBox.No)
             if reply == QMessageBox.Yes:
                 self.unloadAllTiles()
+            else:
+                return
         loadFullTiles = True
         mapCanvasExtend = self.iface.mapCanvas().extent()
         maxFc = mapCanvasExtend.xMaximum()
@@ -2778,5 +2838,42 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                         + str(maxFc) + ' ' + str(minSc) + ',' \
                         + str(minFc) + ' ' + str(minSc) + ',' \
                         + str(minFc) + ' ' + str(maxSc) + '))'
+        projectCrs = QgsProject.instance().crs()
+        projectCrsEpsgCode = -1
+        projectCrsProj4 = ""
+        projectCrsAuthId = projectCrs.authid()
+        if "EPSG" in projectCrsAuthId:
+            projectCrsEpsgCode = int(projectCrsAuthId.replace("EPSG:",""))
+        projectCrsProj4 = projectCrs.toProj4()
+        ret = self.iPyProject.pctGetTilesFromWktGeometry(self.projectPath,
+                                                         mapCanvasWkt,
+                                                         projectCrsEpsgCode,
+                                                         projectCrsProj4)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        numberOfTiles = ret[1]
+        # tilesNames =ret[2]
+        if PC3DDefinitions.CONST_MAX_POINT_TILES > 0:
+            if numberOfTiles > PC3DDefinitions.CONST_MAX_POINT_TILES:
+                text = "The number of tiles to load is limited to "
+                text += str(PC3DDefinitions.CONST_MAX_POINT_TILES)
+                text += "\nto avoid performance problems"
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText(text)
+                msgBox.exec_()
+                # text = str(numberOfTiles) + " tiles will be loaded"
+                # text += "\n\nContinue?"
+                # reply = QMessageBox.question(self.iface.mainWindow(), PC3DDefinitions.CONST_PROGRAM_TITLE,
+                #                              text, QMessageBox.Yes, QMessageBox.No)
+                # if reply == QMessageBox.No:
+                #     return
+                return
         self.view3D(mapCanvasWkt,loadFullTiles)
         return
