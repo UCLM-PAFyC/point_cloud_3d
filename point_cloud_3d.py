@@ -241,6 +241,7 @@ class PointCloud3D:
 
         if not self.pluginIsActive:
 
+            pythonModulePath = self.path_libCpp
             self.iPyProject = IPyPC3DProject()
             self.iPyProject.setPythonModulePath(self.path_libCpp)
             ret = self.iPyProject.initialize()
