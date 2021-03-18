@@ -615,7 +615,7 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                         self.minimumScale = self.minimumValueForMinimumScale
                     break
         else:
-            self.minimumScale = self.scales[0]
+            self.minimumScale = self.scales[3]
         tilesTableName = PC3DDefinitions.CONST_SPATIALITE_LAYERS_TILES_TABLE_NAME
         self.loadTilesLayer()
         layerList = QgsProject.instance().mapLayersByName(tilesTableName)
@@ -1056,6 +1056,7 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.toolButton_SelectByPolygon_3D.clicked.connect(self.selectPointsFromTilesByPolygon3D)
         self.toolButton_SelectByFreehand_3D.clicked.connect(self.selectPointsFromTilesByFreehand3D)
         self.fullTiles3dCheckBox.setChecked(True)
+        self.updateClassesWithoutEditingPushButton.clicked.connect(self.updateClassesWithoutEditing)
         self.view3dMapCanvasPushButton.clicked.connect(self.view3dMapCanvas)
         self.lockedClasses={0:False,1:False,2:False,3:False,4:False,5:False,6:False,7:False,8:False,9:False,10:False,11:False,12:False,13:False}
         self.lavelSimbolByClassNumber={0:"Created",1:"Unclassified",2:"Ground",3:"Low Vegetation",4:"Medium Vegetation",
@@ -1210,6 +1211,30 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
         return
 
+    def getChangedPoints(self):
+        changedPoints = []
+        changedTileNames = []
+        for loadTile in self.loadedTiles:
+            layers = QgsProject.instance().mapLayersByName(loadTile)
+            if len(layers) == 1:
+                layer = layers[0]
+                if layer.type() == QgsMapLayer.VectorLayer:
+                    features = layer.getFeatures()
+                    for feature in features:
+                        point = []
+                        pointClass = feature[PC3DDefinitions.CONST_TILE_FIELD_NAME_CLASS]
+                        pointNewClass = feature[PC3DDefinitions.CONST_TILE_FIELD_NAME_CLASS_NEW]
+                        if pointNewClass != pointClass:
+                            point.append(loadTile)
+                            point.append(feature[PC3DDefinitions.CONST_TILE_FIELD_NAME_FILE_ID])
+                            point.append(feature[PC3DDefinitions.CONST_TILE_FIELD_NAME_POSITION])
+                            point.append(feature[PC3DDefinitions.CONST_TILE_FIELD_NAME_CLASS_NEW])
+                            point.append(feature[PC3DDefinitions.CONST_TILE_FIELD_NAME_CLASS])
+                            changedPoints.append(point)
+                            if not loadTile in changedTileNames:
+                                changedTileNames.append(loadTile)
+        return [changedPoints,changedTileNames]
+
     def getSelectedPoints(self):
         selectedPoints = []
         selectedTileNames = []
@@ -1267,6 +1292,16 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         vlayer.commitChanges()
         if vlayer.isValid():
             QgsProject.instance().addMapLayer(vlayer, False)
+            root = QgsProject.instance().layerTreeRoot()
+            self.layerTreeProject = root.findGroup(self.layerTreeProjectName)
+            if not self.layerTreeProject:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Layers group: " + self.layerTreeProjectName
+                               + " not found\nClose and reload the project")
+                msgBox.exec_()
+                return
             self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
             vlayer.loadNamedStyle(self.qmlRoisFileName)
             vlayer.triggerRepaint()
@@ -1319,6 +1354,16 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         vlayer.commitChanges()
         if vlayer.isValid():
             QgsProject.instance().addMapLayer(vlayer, False)
+            root = QgsProject.instance().layerTreeRoot()
+            self.layerTreeProject = root.findGroup(self.layerTreeProjectName)
+            if not self.layerTreeProject:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Layers group: " + self.layerTreeProjectName
+                               + " not found\nClose and reload the project")
+                msgBox.exec_()
+                return
             self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
             vlayer.loadNamedStyle(self.qmlTilesFileName)
             vlayer.triggerRepaint()
@@ -1869,6 +1914,17 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 return
             if not self.layerTreePCTiles:
                 self.layerTreePCTilesName = PC3DDefinitions.CONST_LAYER_TREE_PCTILES_NAME
+                # self.layerTreePCTiles = self.layerTreeProject.addGroup(self.layerTreePCTilesName)
+                root = QgsProject.instance().layerTreeRoot()
+                self.layerTreeProject = root.findGroup(self.layerTreeProjectName)
+                if not self.layerTreeProject:
+                    msgBox = QMessageBox(self)
+                    msgBox.setIcon(QMessageBox.Information)
+                    msgBox.setWindowTitle(self.windowTitle)
+                    msgBox.setText("Layers group: " + self.layerTreeProjectName
+                                   + " not found\nClose and reload the project")
+                    msgBox.exec_()
+                    return
                 self.layerTreePCTiles = self.layerTreeProject.addGroup(self.layerTreePCTilesName)
             # si no se cargan nuevos
             if len(ret) > 1:
@@ -2612,8 +2668,18 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
     def unloadAllTiles(self):
         if self.layerTreePCTiles:
-            root = self.layerTreeProject
-            self.removeGroup(root,self.layerTreePCTilesName)
+            root = QgsProject.instance().layerTreeRoot()
+            self.layerTreeProject = root.findGroup(self.layerTreeProjectName)
+            if not self.layerTreeProject:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Layers group: " + self.layerTreeProjectName
+                               + " not found\nClose and reload the project")
+                msgBox.exec_()
+                return
+            projectRoot = self.layerTreeProject
+            self.removeGroup(projectRoot,self.layerTreePCTilesName)
             self.layerTreePCTiles = None
             self.layerTreePCTilesName = None
             self.loadedTiles = []
@@ -2625,6 +2691,28 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.minScaleComboBox.currentIndexChanged.disconnect(self.selectMinScale)
             self.minScaleComboBox.setCurrentIndex(posInScaleComboBox)
             self.minScaleComboBox.currentIndexChanged.connect(self.selectMinScale)
+        return
+
+    def updateClassesWithoutEditing(self):
+        changedPoints,changedTileNames = self.getChangedPoints() # tile_name,fileId,pos,classNew,class
+        if len(changedPoints) == 0:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("There are no changes to update")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.pctUpdateNotEdited2dToolsPoints(self.projectPath,
+                                                              changedPoints)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            self.projectsComboBox.setCurrentIndex(0)
+            return
+
         return
 
     def view3D(self,

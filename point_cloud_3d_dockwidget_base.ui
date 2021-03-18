@@ -103,7 +103,7 @@
            </size>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="createNewProjectTab">
            <attribute name="title">
@@ -1595,6 +1595,13 @@
               </layout>
              </item>
             </layout>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="updateClassesWithoutEditingPushButton">
+             <property name="text">
+              <string>Update points' class from changes without editing using 2D tools</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
