@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+"""
+/***************************************************************************
+  QGIS plugin to integrate Point Clouds from LIDAR or Photogrammetry
+        copyright            : (C) David Hernandez Lopez
+        email                : david.hernandez@uclm.es
+ ***************************************************************************/
+"""
+
 # Import PyQt5 classes
 from PyQt5 import uic
 from PyQt5 import QtWidgets

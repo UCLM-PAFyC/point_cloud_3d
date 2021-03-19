@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+"""
+/***************************************************************************
+ QGIS plugin to integrate Point Clouds from LIDAR or Photogrammetry
+        copyright            : (C) David Hernandez Lopez
+        email                : david.hernandez@uclm.es
+ ***************************************************************************/
+"""
+
 __author__ = 'david.hernandez@uclm.es'
 
 CONST_SETTINGS_PLUGIN_NAME = "point_cloud_3d"

@@ -7,17 +7,17 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=Point Cloud Tools
-qgisMinimumVersion=3.0
-description=A plugin for manage point clouds 3D from LIDAR or photogrammetry
-version=0.1
-author=Universidad de Castilla-La Mancha
+name=Point Cloud 3D
+qgisMinimumVersion=3.14
+description=QGIS plugin to integrate Point Clouds from LIDAR or Photogrammetry
+version=0.9.1
+author=David Hernandez Lopez
 email=david.hernandez@uclm.es
 
-about=A plugin for manage point clouds 3D from LiDAR or photogrammetry
+about=QGIS plugin to integrate Point Clouds from LIDAR or Photogrammetry
 
-tracker=https://github.com/daherlo19700113/PointCloudTools
-repository=https://github.com/daherlo19700113/PointCloudTools
+tracker=https://github.com/UCLM-PAFyC/point_cloud_3d
+repository=https://github.com/UCLM-PAFyC/point_cloud_3d
 # End of mandatory metadata
 
 # Recommended items:
@@ -28,7 +28,7 @@ repository=https://github.com/daherlo19700113/PointCloudTools
 # Tags are comma separated with spaces allowed
 tags=PointCloud3D
 
-homepage=https://github.com/daherlo19700113/PointCloud3D
+homepage=https://github.com/UCLM-PAFyC/point_cloud_3d
 category=Vector
 icon=icon.png
 # experimental flag
