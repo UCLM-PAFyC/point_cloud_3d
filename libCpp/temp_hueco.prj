@@ -1,6 +1,0 @@
-Point Cloud Database Management Project
-- Number of processes ......................................# 1
-- Process (CREATE_DB,ADD_POINTCLOUD,ADD_ROI,WRITE_PCFS) ....# ADD_POINTCLOUD_NEW
-  - Database file name .....................................# "X:/EjemplosLidarEiffage/zamora/proceso_lidar/pct_zamora_trozo_grid20.sqlite"
-  - File ...................................................# "X:/EjemplosLidarEiffage/zamora/proceso_lidar/zamora_trozo.las"
-    CRS (libCRS/EPSG/proj4/wkt) ............................# 25830

@@ -1,6 +1,0 @@
-Point Cloud Database Management Project
-- Number of processes ......................................# 1
-- Process (CREATE_DB,ADD_POINTCLOUD,ADD_ROI,WRITE_PCFS) ....# WRITE_PCFS
-  - Database file name .....................................# "X:/EjemplosLidarEiffage/zamora/proceso_lidar/pct_zamora_lidar_pnoa_g50.sqlite"
-  - Point Cloud Files Suffix ...............................# _edited
-  - Point Cloud Files Output Path (empty for current ) .....#X:/EjemplosLidarEiffage/zamora/LiDAR_PNOA

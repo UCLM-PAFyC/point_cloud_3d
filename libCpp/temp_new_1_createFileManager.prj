@@ -1,9 +1,0 @@
-Point Cloud File Management Project
-- Number of processes ......................................# 1
-- Process (CREATE_PCF,ADD_POINTCLOUD,ADD_ROI,WRITE_PCFS) ...# CREATE_PCF
-  - PoinCloudFileManager path ..............................# "X:/EjemplosLidarEiffage/zamora/pcfile/zamora_lidar"
-  - Database CRS (libCRS/EPSG/proj4/wkt) ...................# 25830
-    Height type (ORTHOMETRIC_HEIGHT,ELLIPSOID_HEIGHT) ......# ORTHOMETRIC_HEIGHT
-  - Grid size ..............................................# 50.000
-  - Project Type (Generic,PowerLine,SolarPark) .............# generic
-  - Project parameters (par1@v@value1@p@par2@v@value2...) ..# Author@v@David Hernandez@p@Company@v@UCLM@p@Color@v@true@p@GpsTime@v@false@p@UserData@v@false@p@Intensity@v@false@p@SourceId@v@false@p@Nir@v@true@p@Return@v@false@p@Returns@v@false@p@ColorBytes@v@1

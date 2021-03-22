@@ -32,7 +32,7 @@ from qgis.core import QgsApplication, QgsDataSourceUri
 # import PCTDefinitions
 
 from .point_cloud_3d_about_qdialog import AboutQDialog
-from .multipleFileSelectorDialog.multiple_file_selector_dialog import * #panel nueva camara
+from .multipleFileSelectorDialog.multiple_file_selector_dialog import *
 from .processListEditionDialog.process_list_edition_dialog import *
 from . import PC3DDefinitions
 #  dhl
@@ -172,9 +172,8 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                         if pointClassNew != classValue \
                                 and classValue != PC3DDefinitions.CONST_ACTION_ALL_CLASSES_VALUE:
                             layer.deselect(feature.id())
-                    else:
-                        if pointClassNew == classValue\
-                                or classValue != PC3DDefinitions.CONST_ACTION_ALL_CLASSES_VALUE:
+                    elif self.unselectRadioButton.isChecked():
+                        if pointClassNew == classValue:
                             layer.deselect(feature.id())
             return
         if self.lockedClass0CheckBox.isChecked():

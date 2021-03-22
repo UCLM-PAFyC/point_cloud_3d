@@ -1,4 +1,4 @@
 setlocal
-cd "C:/Users/David.Hernandez/AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins/point_cloud_3d/libCpp"
-C:/LAStools2019/bin/las2dem64 -i X:/tical/20200507/vora-riu-03052020_dhl.laz -keep_class  2 -nodata  -9999 -step  0.2 -o X:/tical/20200507/vora-riu-03052020_dtm.tif
+cd "E:/dev/src/python/qgis3/point_cloud_3d/libCpp"
+C:/LAStools2021/bin/las2dem64 -i C:/uclm/Ejemplo_Zamora_1/PNOA_LiDAR/prueba/lat.laz -keep_class  2 -nodata  -9999 -step  1.0 -o C:/uclm/Ejemplo_Zamora_1/PNOA_LiDAR/prueba/dtm_lat.tif
 endlocal

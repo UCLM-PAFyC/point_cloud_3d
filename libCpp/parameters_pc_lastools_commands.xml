@@ -71,7 +71,7 @@
         <Description>Grid size, spatial resolution, of DTM. 0.2 for uav lidar, 2.0 for PNOA-LIDAR</Description>
         <PrintSize>20</PrintSize>
         <Unit>meters</Unit>
-        <Value>0.2</Value>
+        <Value>1.0</Value>
         <MaximumValue>2.0</MaximumValue>
         <MinimumValue>0.0</MinimumValue>
         <PrintPrecision>1</PrintPrecision>
@@ -297,7 +297,7 @@
         <Description>First shapefile for clip</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>X:/EjemplosLidarEiffage/zamora/geometria_lat/buffer_lineas_50m.shp</Value>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Definicion_LAT/ROI_50m.shp</Value>
     </Parameter>
     <Parameter>
         <Command>Powerline preprocessing</Command>
@@ -308,7 +308,7 @@
         <Description>Second shapefile for clip. 25 m for PNOA-LIDAR</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>X:/EjemplosLidarEiffage/zamora/geometria_lat/buffer_lineas_25m.shp</Value>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Definicion_LAT/ROI_25m.shp</Value>
     </Parameter>
     <Parameter>
         <Command>Powerline preprocessing</Command>
@@ -319,7 +319,7 @@
         <Description>Third shapefile for clip</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>X:/EjemplosLidarEiffage/zamora/geometria_lat/buffer_lineas_7,5m_disolve.shp</Value>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Definicion_LAT/ROI_7_5m.shp</Value>
     </Parameter>
     <Parameter>
         <Command>Powerline preprocessing</Command>
@@ -467,7 +467,7 @@
         <Description>Empty base path for auxiliary temporal folders</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>X:\EjemplosLidarEiffage\zamora\temp</Value>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Temp</Value>
     </Parameter>
     <Parameter>
         <Command>SolarPark preprocessing</Command>

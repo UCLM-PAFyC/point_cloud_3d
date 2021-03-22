@@ -23,7 +23,7 @@ import sys
 # import pydevd
 
 from PyQt5.QtWidgets import QMessageBox,QFileDialog,QTabWidget,QInputDialog,QLineEdit
-from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFileInfo, QDir, QObject
+from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFileInfo, QDir, QObject, QFile
 from qgis.core import QgsApplication, QgsDataSourceUri
 pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
 pluginPath = os.path.dirname(os.path.realpath(__file__))
@@ -226,7 +226,20 @@ class PointCloud3D:
         """Run method that loads and starts the plugin"""
 
         if not self.pluginIsActive:
-
+            egm08UncompressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_FILE_NAME
+            if not QFile.exists(egm08UncompressFileName):
+                egm08compressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_COMPRESS_FILE_NAME
+                text = "Before launching the plugin\n"
+                text = "\nyou must unzip the file:\n"
+                text += egm08compressFileName
+                text += "\nin the same path using 7-zip, https://www.7-zip.org/"
+                text += "\n\nThe unzipped file could not be uploaded\ndue to limitations in the Github account "
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                # msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText(text)
+                msgBox.exec_()
+                return
             pythonModulePath = self.path_libCpp
             self.iPyProject = IPyPC3DProject()
             self.iPyProject.setPythonModulePath(self.path_libCpp)
@@ -286,10 +299,7 @@ class PointCloud3D:
                              # modelManagementFileName):
         """Run method that loads and starts the plugin"""
 
-        if self.pluginIsActive:
-            yo = 1
-            yo = yo + 1
-        else:
+        if not self.pluginIsActive:
             self.current_plugin_name = plugin_name
             # self.iPyProject = IPyPCTProject()
             # self.iPyProject.setPythonModulePath(self.path_libCpp)

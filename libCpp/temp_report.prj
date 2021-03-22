@@ -1,6 +1,0 @@
-Point Cloud Database Management Project
-- Number of processes ......................................# 1
-- Process (CREATE_DB,ADD_POINTCLOUD,ADD_ROI,WRITE_PCFS,PRCMR) ....# PRCMR
-  - Database file name .....................................# "C:/LidarQC/industrial_ab/20190523.sqlite"
-  - Output file name .......................................# C:/LidarQC/industrial_ab/ResultsReport_industrial_ab_20190523.txt
-  - Selected classes (; separated values) ..................#2;3;4;5;6;7
