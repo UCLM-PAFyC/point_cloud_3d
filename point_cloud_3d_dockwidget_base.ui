@@ -79,7 +79,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="projectDefinitionPage">
        <property name="geometry">
@@ -87,7 +87,7 @@
          <x>0</x>
          <y>0</y>
          <width>555</width>
-         <height>538</height>
+         <height>542</height>
         </rect>
        </property>
        <attribute name="label">
@@ -1623,7 +1623,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Update points' class from editing without using 2D tools</string>
+             <string>Update point classes from editing without using 2D tools</string>
             </property>
            </widget>
           </item>
@@ -1799,7 +1799,7 @@
          <x>0</x>
          <y>0</y>
          <width>555</width>
-         <height>538</height>
+         <height>542</height>
         </rect>
        </property>
        <attribute name="label">

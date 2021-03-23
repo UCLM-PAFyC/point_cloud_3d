@@ -23,7 +23,7 @@ UCLM - PAFyC, [http://pafyc.uclm.es](http://pafyc.uclm.es)
 USAL - TIDOP, [http://tidop.usal.es](http://tidop.usal.es)
 
 
-Beta version: 0.9.1, Minimal QGIS version: 3.4
+Beta version: 0.9.1, Minimum QGIS version: 3.4
 
 Operating system: Windows 10
 
@@ -33,7 +33,7 @@ https://3d.bk.tudelft.nl/liangliang/software.html
 Any use of this version is allowed without 
 responsibility for the author
 
-Video tutorial: https://youtu.be/oWTB-DBD8Sw
+Video tutorial: https://youtu.be/ni-rUau5jBw
 
 Please report any bugs and enhancement ideas by email: david.hernandez@uclm.es
 
@@ -42,7 +42,7 @@ Contact the author to request any custom development or migration to other opera
 Current funcionalities:
 - Create Project
 - Import point cloud files (LAS/LAZ) selecting attributes
-- Edit points' class using 2D/3D tools or values for attribute class_new changed with any QGIS' tool
+- Edit point classes using 2D/3D tools or values for attribute class_new changed with any QGIS' tool
 - Delete points
 - Export changes to original point cloud files
 - Perform some LAStools processes in an optimized way
