@@ -9,7 +9,7 @@
 
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, Qt
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QDockWidget
+from PyQt5.QtWidgets import QAction, QDockWidget, QMessageBox
 # Initialize Qt resources from file resources.py
 from .resources import *
 
@@ -244,6 +244,13 @@ class PointCloud3D:
             self.iPyProject = IPyPC3DProject()
             self.iPyProject.setPythonModulePath(self.path_libCpp)
             ret = self.iPyProject.initialize()
+            if ret[0] == "False":
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                # msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("\n" + ret[1])
+                msgBox.exec_()
+                return
             path_file_qsettings = self.path_plugin + '/' + PC3DDefinitions.CONST_SETTINGS_FILE_NAME
             self.settings = QSettings(path_file_qsettings, QSettings.IniFormat)
 
