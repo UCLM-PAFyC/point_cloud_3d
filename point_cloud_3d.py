@@ -229,11 +229,11 @@ class PointCloud3D:
             egm08UncompressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_FILE_NAME
             if not QFile.exists(egm08UncompressFileName):
                 egm08compressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_COMPRESS_FILE_NAME
-                text = "Before launching the plugin\n"
-                text = "\nyou must unzip the file:\n"
+                text = "Before opening the plugin for the first time \n"
+                text += "\nyou must unzip the file:\n"
                 text += egm08compressFileName
                 text += "\nin the same path using 7-zip, https://www.7-zip.org/"
-                text += "\n\nThe unzipped file could not be uploaded\ndue to limitations in the Github account "
+                text += "\n\nThe unzipped file could not be uploaded to Github due to account limitations"
                 msgBox = QMessageBox()
                 msgBox.setIcon(QMessageBox.Information)
                 # msgBox.setWindowTitle(self.windowTitle)
