@@ -5,6 +5,7 @@
 **/*.pro.user
 **/*.pro.user.*
 **/egm08_25.gtx
+**/PointClouds3D.ini
 
 **/*.svn-base
 **/.svn
