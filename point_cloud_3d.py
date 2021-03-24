@@ -229,7 +229,7 @@ class PointCloud3D:
             egm08UncompressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_FILE_NAME
             if not QFile.exists(egm08UncompressFileName):
                 egm08compressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_COMPRESS_FILE_NAME
-                text = "Before opening the plugin for the first time \n"
+                text = "Before opening the plugin for the first time"
                 text += "\nyou must unzip the file:\n"
                 text += egm08compressFileName
                 text += "\nin the same path using 7-zip, https://www.7-zip.org/"
