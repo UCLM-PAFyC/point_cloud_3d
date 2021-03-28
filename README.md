@@ -1,6 +1,6 @@
-# **POINT CLOUD 3D**
+# **POINT CLOUD 3D - QGIS**
 
-## A plugin to integrate point clouds from LIDAR or Photogrammetry
+## A plugin to integrate in QGIS point clouds from LIDAR or Photogrammetry
 
 [https://github.com/UCLM-PAFyC/point\_cloud\_3d](https://github.com/UCLM-PAFyC/point_cloud_3d)
 
@@ -51,5 +51,5 @@ To do ...
 - Create a user manual
 - Improve 3D viewer
 - Automate processes with other vector data sources
-- Automate processes with other raster data sources
+- Automate processes with raster data sources
 
