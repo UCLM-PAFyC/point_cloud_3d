@@ -2113,6 +2113,14 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         strDir = QFileDialog.getExistingDirectory(self,title,self.path,
                                                   QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         if strDir:
+            if not len(QDir(strDir).entryList(QDir.NoDotAndDotDot|QDir.AllEntries)) == 0:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select the path of an empty folder ")
+                msgBox.exec_()
+                # self.projectPathLineEdit.setText('')
+                return
             self.path = strDir
             self.projectPathLineEdit.setText(strDir)
             self.settings.setValue("last_path", self.path)
