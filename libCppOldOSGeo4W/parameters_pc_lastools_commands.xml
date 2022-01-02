@@ -23,7 +23,7 @@
         <Description>LAZ Geoid heights file. Select from folder geoids_lastools</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>E:\dev\src\python\qgis3\point_cloud_3d\libCpp/geoids_lastools/EGM08_REDNAP_25830.laz</Value>
+        <Value>E:\dev\src\python\qgis3\point_cloud_3d\libCppOldOSGeo4W/geoids_lastools/EGM08_REDNAP_25830.laz</Value>
     </Parameter>
     <Parameter>
         <Command>las2dem64</Command>

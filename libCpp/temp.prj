@@ -1,6 +1,0 @@
-Point Cloud File Management Project
-- Number of processes ......................................# 1
-- Process (CREATE_PCF,ADD_POINTCLOUD,ADD_ROI,WRITE_PCFS) ...# WRITE_PCFS
-  - PoinCloudFileManager path ..............................# "D:/PointCloud3DProjects/IndustrialParkCampollanoAB/pc3d_lidar_rgb_2009"
-  - Point Cloud Files Suffix ...............................# 
-  - Point Cloud Files Output Path (empty for current ) .....# D:/PointCloud3DProjects/IndustrialParkCampollanoAB/data/export

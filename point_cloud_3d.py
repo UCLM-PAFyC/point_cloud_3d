@@ -25,15 +25,42 @@ import sys
 from PyQt5.QtWidgets import QMessageBox,QFileDialog,QTabWidget,QInputDialog,QLineEdit
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFileInfo, QDir, QObject, QFile
 from qgis.core import QgsApplication, QgsDataSourceUri
+
+from osgeo import osr
+projVersionMajor = osr.GetPROJVersionMajor()
+# projVersionMinor = osr.GetPROJVersionMinor()
 pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
 pluginPath = os.path.dirname(os.path.realpath(__file__))
 pluginPath = os.path.join(pluginsPath, pluginPath)
-libCppPath = os.path.join(pluginPath, 'libCpp')
+libCppPath = None
+if projVersionMajor < 8:
+    libCppPath = os.path.join(pluginPath, 'libCppOldOSGeo4W')
+else:
+    libCppPath = os.path.join(pluginPath, 'libCpp')
+# libCppPath = os.path.join(pluginPath, 'libCpp')
 existsPluginPath = QDir(libCppPath).exists()
 sys.path.append(pluginPath)
 sys.path.append(libCppPath)
 os.environ["PATH"] += os.pathsep + libCppPath
-from libCpp.libPyPointCloud3D import IPyPC3DProject
+
+qLidarDockWidget = None
+IPyPC3DProject = None
+if projVersionMajor < 8:
+    from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
+    from libCppOldOSGeo4W.libPyPointCloud3D import IPyPC3DProject
+else:
+    from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
+#     from libCpp.libPyPointCloud3D import IPyPC3DProject
+
+# pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
+# pluginPath = os.path.dirname(os.path.realpath(__file__))
+# pluginPath = os.path.join(pluginsPath, pluginPath)
+# libCppPath = os.path.join(pluginPath, 'libCpp')
+# existsPluginPath = QDir(libCppPath).exists()
+# sys.path.append(pluginPath)
+# sys.path.append(libCppPath)
+# os.environ["PATH"] += os.pathsep + libCppPath
+# from libCpp.libPyPointCloud3D import IPyPC3DProject
 from . import PC3DDefinitions
 
 
@@ -51,6 +78,7 @@ class PointCloud3D:
 
         # pydevd.settrace('localhost',port=54100,stdoutToServer=True,stderrToServer=True)
 
+        self.projVersionMajor = projVersionMajor
         self.path_plugin = pluginPath
         self.path_libCpp = libCppPath
         self.current_plugin_name = PC3DDefinitions.CONST_SETTINGS_PLUGIN_NAME
@@ -206,7 +234,6 @@ class PointCloud3D:
 
         self.pluginIsActive = False
 
-
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
 
@@ -225,117 +252,128 @@ class PointCloud3D:
     def run(self):
         """Run method that loads and starts the plugin"""
 
-        if not self.pluginIsActive:
-            egm08UncompressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_FILE_NAME
-            if not QFile.exists(egm08UncompressFileName):
-                egm08compressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_COMPRESS_FILE_NAME
-                text = "Before opening the plugin for the first time"
-                text += "\nyou must unzip the file:\n"
-                text += egm08compressFileName
-                text += "\nin the same path using 7-zip, https://www.7-zip.org/"
-                text += "\n\nThe unzipped file could not be uploaded to Github due to account limitations"
-                msgBox = QMessageBox()
-                msgBox.setIcon(QMessageBox.Information)
-                # msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText(text)
-                msgBox.exec_()
-                return
-            pythonModulePath = self.path_libCpp
-            self.iPyProject = IPyPC3DProject()
-            self.iPyProject.setPythonModulePath(self.path_libCpp)
-            ret = self.iPyProject.initialize()
-            if ret[0] == "False":
-                msgBox = QMessageBox()
-                msgBox.setIcon(QMessageBox.Information)
-                # msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("\n" + ret[1])
-                msgBox.exec_()
-                return
-            path_file_qsettings = self.path_plugin + '/' + PC3DDefinitions.CONST_SETTINGS_FILE_NAME
-            self.settings = QSettings(path_file_qsettings, QSettings.IniFormat)
+        if self.projVersionMajor < 8:
+            if not self.pluginIsActive:
+                egm08UncompressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_FILE_NAME
+                if not QFile.exists(egm08UncompressFileName):
+                    egm08compressFileName = libCppPath + "/" + PC3DDefinitions.CONST_EGM08_25_COMPRESS_FILE_NAME
+                    text = "Before opening the plugin for the first time"
+                    text += "\nyou must unzip the file:\n"
+                    text += egm08compressFileName
+                    text += "\nin the same path using 7-zip, https://www.7-zip.org/"
+                    text += "\n\nThe unzipped file could not be uploaded to Github due to account limitations"
+                    msgBox = QMessageBox()
+                    msgBox.setIcon(QMessageBox.Information)
+                    # msgBox.setWindowTitle(self.windowTitle)
+                    msgBox.setText(text)
+                    msgBox.exec_()
+                    return
+        if self.projVersionMajor >= 8:
+            text = "<p>Invalid plugin for this QGIS version</p>"
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            # msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setTextFormat(Qt.RichText)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        pythonModulePath = self.path_libCpp
+        self.iPyProject = IPyPC3DProject()
+        self.iPyProject.setPythonModulePath(self.path_libCpp)
+        ret = self.iPyProject.initialize()
+        if ret[0] == "False":
+            msgBox = QMessageBox()
+            msgBox.setIcon(QMessageBox.Information)
+            # msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("\n" + ret[1])
+            msgBox.exec_()
+            return
+        path_file_qsettings = self.path_plugin + '/' + PC3DDefinitions.CONST_SETTINGS_FILE_NAME
+        self.settings = QSettings(path_file_qsettings, QSettings.IniFormat)
 
-            self.pluginIsActive = True
+        self.pluginIsActive = True
 
-            #print "** STARTING PointCloudTools"
+        #print "** STARTING PointCloudTools"
 
-            # dockwidget may not exist if:
-            #    first run of plugin
-            #    removed on close (see self.onClosePlugin method)
-            if self.dockwidget == None:
-                connectionFileName = None  #WithoutPath = None
-                # modelManagementFileName = None
+        # dockwidget may not exist if:
+        #    first run of plugin
+        #    removed on close (see self.onClosePlugin method)
+        if self.dockwidget == None:
+            connectionFileName = None  #WithoutPath = None
+            # modelManagementFileName = None
 
-                # Create the dockwidget (after translation) and keep reference
-                self.dockwidget = PointCloud3DDockWidget(self.iface,
-                                                            self.path_plugin,
-                                                            self.path_libCpp,
-                                                            self.current_plugin_name,
-                                                            self.settings,
-                                                            self.iPyProject,
-                                                            connectionFileName)
+            # Create the dockwidget (after translation) and keep reference
+            self.dockwidget = PointCloud3DDockWidget(self.iface,
+                                                     self.projVersionMajor,
+                                                     self.path_plugin,
+                                                     self.path_libCpp,
+                                                     self.current_plugin_name,
+                                                     self.settings,
+                                                     self.iPyProject,
+                                                     connectionFileName)
                                                             # modelManagementFileName)
 
-            # connect to provide cleanup on closing of dockwidget
-            self.dockwidget.closingPlugin.connect(self.onClosePlugin)
+        # connect to provide cleanup on closing of dockwidget
+        self.dockwidget.closingPlugin.connect(self.onClosePlugin)
 
-            # # show the dockwidget
-            # # TODO: fix to allow choice of dock location
-            # self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
-            # self.dockwidget.show()
-            # show the dockwidget
-            # TODO: fix to allow choice of dock location
-            # self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
-                        # self.dockwidget.show()
+        # # show the dockwidget
+        # # TODO: fix to allow choice of dock location
+        # self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
+        # self.dockwidget.show()
+        # show the dockwidget
+        # TODO: fix to allow choice of dock location
+        # self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
+        # self.dockwidget.show()
 
-            # bfg
-            layersPanel = [x for x in self.iface.mainWindow().findChildren(QDockWidget) if x.objectName() == 'Layers']
-            self.iface.addDockWidget(Qt.LeftDockWidgetArea, layersPanel[0])
-            self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
-            self.iface.mainWindow().tabifyDockWidget(layersPanel[0], self.dockwidget)
-            self.iface.mainWindow().showNormal()
-            self.iface.mainWindow().showMaximized()
-            self.iface.mainWindow().update()
+        # bfg
+        layersPanel = [x for x in self.iface.mainWindow().findChildren(QDockWidget) if x.objectName() == 'Layers']
+        self.iface.addDockWidget(Qt.LeftDockWidgetArea, layersPanel[0])
+        self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
+        self.iface.mainWindow().tabifyDockWidget(layersPanel[0], self.dockwidget)
+        self.iface.mainWindow().showNormal()
+        self.iface.mainWindow().showMaximized()
+        self.iface.mainWindow().update()
 
-    def runFromAnotherPlugin(self,
-                             iface,
-                             path_plugin,
-                             path_libCpp,
-                             plugin_name,
-                             iPyProject,
-                             connectionFileName):
-                             # modelManagementFileName):
-        """Run method that loads and starts the plugin"""
-
-        if not self.pluginIsActive:
-            self.current_plugin_name = plugin_name
-            # self.iPyProject = IPyPCTProject()
-            # self.iPyProject.setPythonModulePath(self.path_libCpp)
-            # ret = self.iPyProject.initialize()
-            path_file_qsettings = self.path_plugin + '/' + PC3DDefinitions.CONST_SETTINGS_FILE_NAME
-            self.settings = QSettings(path_file_qsettings, QSettings.IniFormat)
-
-            self.pluginIsActive = True
-
-            #print "** STARTING PointCloudTools"
-
-            # dockwidget may not exist if:
-            #    first run of plugin
-            #    removed on close (see self.onClosePlugin method)
-            if self.dockwidget == None:
-                # Create the dockwidget (after translation) and keep reference
-                self.dockwidget = PointCloud3DDockWidget(self.iface,
-                                                            self.path_plugin,
-                                                            self.path_libCpp,
-                                                            self.current_plugin_name,
-                                                            self.settings,
-                                                            iPyProject,
-                                                            connectionFileName)
-                                                            # modelManagementFileName)
-
-            # connect to provide cleanup on closing of dockwidget
-            self.dockwidget.closingPlugin.connect(self.onClosePlugin)
-
-            # show the dockwidget
-            # TODO: fix to allow choice of dock location
-            self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
-            self.dockwidget.show()
+    # def runFromAnotherPlugin(self,
+    #                          iface,
+    #                          path_plugin,
+    #                          path_libCpp,
+    #                          plugin_name,
+    #                          iPyProject,
+    #                          connectionFileName):
+    #                          # modelManagementFileName):
+    #     """Run method that loads and starts the plugin"""
+    #
+    #     if not self.pluginIsActive:
+    #         self.current_plugin_name = plugin_name
+    #         # self.iPyProject = IPyPCTProject()
+    #         # self.iPyProject.setPythonModulePath(self.path_libCpp)
+    #         # ret = self.iPyProject.initialize()
+    #         path_file_qsettings = self.path_plugin + '/' + PC3DDefinitions.CONST_SETTINGS_FILE_NAME
+    #         self.settings = QSettings(path_file_qsettings, QSettings.IniFormat)
+    #
+    #         self.pluginIsActive = True
+    #
+    #         #print "** STARTING PointCloudTools"
+    #
+    #         # dockwidget may not exist if:
+    #         #    first run of plugin
+    #         #    removed on close (see self.onClosePlugin method)
+    #         if self.dockwidget == None:
+    #             # Create the dockwidget (after translation) and keep reference
+    #             self.dockwidget = PointCloud3DDockWidget(self.iface,
+    #                                                         self.path_plugin,
+    #                                                         self.path_libCpp,
+    #                                                         self.current_plugin_name,
+    #                                                         self.settings,
+    #                                                         iPyProject,
+    #                                                         connectionFileName)
+    #                                                         # modelManagementFileName)
+    #
+    #         # connect to provide cleanup on closing of dockwidget
+    #         self.dockwidget.closingPlugin.connect(self.onClosePlugin)
+    #
+    #         # show the dockwidget
+    #         # TODO: fix to allow choice of dock location
+    #         self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
+    #         self.dockwidget.show()

@@ -1,0 +1,14 @@
+Point Cloud File Management Project
+- Number of processes ......................................# 1
+- Process (CREATE_PCFM,ADD_PCFILE,ADD_ROI,WRITE_PCFS) ......# ADD_PCFILES
+  - PoinCloudFileManager path ..............................# "D:/PointCloud3DProjects/IncendioLietor2016/pc3d_20210507"
+  - CRS (libCRS/EPSG/proj4/wkt) ............................# 25830
+  - Number of files ........................................# 8
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_596-4264_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_596-4266_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_596-4268_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_598-4264_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_598-4266_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_598-4268_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_600-4264_ORT-CLA-COL.laz"
+  - File ...................................................# "D:/PointCloud3DProjects/IncendioLietor2016/data/lidar_2009/PNOA_2009_Lote3_CLM_600-4266_ORT-CLA-COL.laz"

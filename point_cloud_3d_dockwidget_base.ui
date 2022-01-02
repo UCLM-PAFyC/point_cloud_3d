@@ -103,7 +103,7 @@
            </size>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="createNewProjectTab">
            <attribute name="title">
@@ -331,7 +331,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>Select existing path for store the project</string>
+                 <string>Select existing empty path for store the project</string>
                 </property>
                 <property name="text">
                  <string>Path</string>
