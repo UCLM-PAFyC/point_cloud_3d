@@ -1,0 +1,133 @@
+<!DOCTYPE ParametersManager>
+<ParametersManager version="1.1">
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>Author</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Author</Tag>
+        <Type>Text</Type>
+        <Description>Author</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>David Hernandez</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>Company</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Company</Tag>
+        <Type>Text</Type>
+        <Description>Company</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>UCLM</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>Color</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store color</Tag>
+        <Type>Value list</Type>
+        <Description>Store color</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>GpsTime</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store gps time</Tag>
+        <Type>Value list</Type>
+        <Description>Store gps time</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>UserData</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store user data</Tag>
+        <Type>Value list</Type>
+        <Description>Store user data</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+     <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>Intensity</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store intensity</Tag>
+        <Type>Value list</Type>
+        <Description>Store intensity</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>SourceId</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store source id</Tag>
+        <Type>Value list</Type>
+        <Description>Store source id</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>Nir</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store nir</Tag>
+        <Type>Value list</Type>
+        <Description>Store nir</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>false</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>Return</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store return</Tag>
+        <Type>Value list</Type>
+        <Description>Store return</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>Returns</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Store returns</Tag>
+        <Type>Value list</Type>
+        <Description>Store returns</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>ProjectParameters</Command>
+        <Code>ColorBytes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>Color bytes</Tag>
+        <Type>Value list</Type>
+        <Description>Number of bytes to store color, RGB and nir</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>1;2</ValueList>
+        <Value>1</Value>
+    </Parameter>
+</ParametersManager>

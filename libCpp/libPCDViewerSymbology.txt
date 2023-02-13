@@ -1,0 +1,20 @@
+0#Created, never classified#0#0#0#255
+1#Unclassified#149#149#149#255
+2#Ground#222#118#27#255
+3#Low Vegetation#30#61#23#255
+4#Medium Vegetatio#73#122#43#255
+5#High Vegetation#114#191#68#255
+6#Building#255#0#0#255
+7#Low Point (noise)#232#18#229#255
+8#Model Key-point (mass point)#0#0#0#255
+9#Water#27#158#214#255
+10#Reserved ASPRS#0#0#0#255
+11#Reserved ASPRS#0#0#0#255
+12#Overlap Points#0#0#0#255
+13#Reserved ASPRS#0#0#0#255
+14#Reserved ASPRS#0#0#0#255
+15#Reserved ASPRS#0#0#0#255
+22#Removed#210#210#210#255
+
+
+
