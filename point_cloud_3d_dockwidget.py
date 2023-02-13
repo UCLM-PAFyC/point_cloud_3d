@@ -2260,7 +2260,7 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         strDir = QFileDialog.getExistingDirectory(self,"Select directory", self.projectManagerOutputPath,
                                                   QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         if strDir:
-            ret = self.iPyProject.pctSetProjectManagerOutputPath(self.strDir)
+            ret = self.iPyProject.pctSetProjectManagerOutputPath(strDir)
             if ret[0] == "False":
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
@@ -2280,7 +2280,7 @@ class PointCloud3DDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         strDir = QFileDialog.getExistingDirectory(self,"Select directory", self.projectManagerTemporalPath,
                                                   QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         if strDir:
-            ret = self.iPyProject.pctSetProjectManagerTemporalPath(self.strDir)
+            ret = self.iPyProject.pctSetProjectManagerTemporalPath(strDir)
             if ret[0] == "False":
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
