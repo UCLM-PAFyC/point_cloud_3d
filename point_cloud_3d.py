@@ -20,11 +20,33 @@ import os.path
 import sys
 # sys.path.append("C:\Program Files\JetBrains\PyCharm 2018.3.3\debug-eggs\pycharm-debug.egg") # dhl
 # sys.path.append("C:\Program Files\JetBrains\PyCharm 2020.3\debug-eggs\pydevd-pycharm.egg") # dhl
+# sys.path.append("C:\Program Files\JetBrains\PyCharm 2023.2\debug-eggs\pydevd-pycharm.egg") # dhl
 # import pydevd
 
 from PyQt5.QtWidgets import QMessageBox,QFileDialog,QTabWidget,QInputDialog,QLineEdit
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFileInfo, QDir, QObject, QFile
-from qgis.core import QgsApplication, QgsDataSourceUri
+from qgis.core import QgsApplication, QgsDataSourceUri, Qgis
+
+strQGISVersion = Qgis.QGIS_VERSION
+versionItems = strQGISVersion.split('.')
+qGisFirstVersion = int(versionItems[0])
+qGisSecondVersion = int(versionItems[1])
+strThirdVersion = versionItems[2]
+strThirdVersionItems = strThirdVersion.split('-')
+qGisThirdVersion = int(strThirdVersionItems[0])
+# if qGisSecondVersion <= 28:
+#     text = "QGIS version: " + strQGISVersion
+#     text += "\nFirst version: " + str(qGisFirstVersion)
+#     text += "\nSecond version: " + str(qGisSecondVersion)
+#     text += "\nThird version: " + str(qGisThirdVersion)
+#     msgBox = QMessageBox()
+#     msgBox.setIcon(QMessageBox.Information)
+#     msgBox.setText(text)
+#     msgBox.exec_()
+# else:
+#     raise ValueError('Invalid QGIS version')
+if qGisFirstVersion == 3 and qGisSecondVersion == 28 and qGisThirdVersion !=9:
+    raise ValueError('For QGIS 3.28 only is valid 3.28.9')
 
 from osgeo import osr
 projVersionMajor = osr.GetPROJVersionMajor()
@@ -33,10 +55,13 @@ pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
 pluginPath = os.path.dirname(os.path.realpath(__file__))
 pluginPath = os.path.join(pluginsPath, pluginPath)
 libCppPath = None
-if projVersionMajor < 8:
-    libCppPath = os.path.join(pluginPath, 'libCppOldOSGeo4W')
-else:
-    libCppPath = os.path.join(pluginPath, 'libCpp')
+if qGisSecondVersion < 28:
+    if projVersionMajor < 8:
+        libCppPath = os.path.join(pluginPath, 'libCppOldOSGeo4W')
+    else:
+        libCppPath = os.path.join(pluginPath, 'libCpp')
+else: # de momento no se si falla con versiones superiores a 3.28
+    libCppPath = os.path.join(pluginPath, 'libCppOSGeo4W_3_28_9')
 # libCppPath = os.path.join(pluginPath, 'libCpp')
 existsPluginPath = QDir(libCppPath).exists()
 sys.path.append(pluginPath)
@@ -45,11 +70,21 @@ os.environ["PATH"] += os.pathsep + libCppPath
 
 qLidarDockWidget = None
 IPyPC3DProject = None
-if projVersionMajor < 8:
+if qGisSecondVersion < 28:
+    if projVersionMajor < 8:
+        from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
+        from libCppOldOSGeo4W.libPyPointCloud3D import IPyPC3DProject
+    else:
+        from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
+        from libCpp.libPyPointCloud3D import IPyPC3DProject
+else: # de momento no se si falla con versiones superiores a 3.28
     from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
-    from libCppOldOSGeo4W.libPyPointCloud3D import IPyPC3DProject
-else:
-    from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
+    from libCppOSGeo4W_3_28_9.libPyPointCloud3D import IPyPC3DProject
+# if projVersionMajor < 8:
+#     from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
+#     from libCppOldOSGeo4W.libPyPointCloud3D import IPyPC3DProject
+# else:
+#     from .point_cloud_3d_dockwidget import PointCloud3DDockWidget
 #     from libCpp.libPyPointCloud3D import IPyPC3DProject
 
 # pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()

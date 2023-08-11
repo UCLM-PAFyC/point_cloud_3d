@@ -1,0 +1,1428 @@
+<!DOCTYPE ParametersManager>
+<ParametersManager version="1.1">
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_cores</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-cores</Tag>
+        <Type>Integer number</Type>
+        <Description>Number of cores</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4</Value>
+        <MaximumValue>12</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_ground_offset</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ground_offset</Tag>
+        <Type>Double precision number</Type>
+        <Description>Only points that are above this value ground are considered, default 2.0</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>1.50</Value>
+        <MaximumValue>50.00</MaximumValue>
+        <MinimumValue>0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_keep_overhang</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_overhang</Tag>
+        <Type>Empty Text</Type>
+        <Description>Don't remove vegetation points that overhang building and are close in height</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_planar</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-planar</Tag>
+        <Type>Double precision number</Type>
+        <Description>Grid cell points up to this standard deviation are potential roofs, default is 0.1</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>2.00</MaximumValue>
+        <MinimumValue>0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_rugged</Code>
+        <Enabled>No</Enabled>
+        <Tag>-rugged</Tag>
+        <Type>Double precision number</Type>
+        <Description>Grid cell points above this standard deviation are potential vegetation, default is 0.4</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.40</Value>
+        <MaximumValue>2.00</MaximumValue>
+        <MinimumValue>0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_small_buildings</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-small_buildings</Tag>
+        <Type>Empty Text</Type>
+        <Description>Don't discard overly small buildings</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_small_trees</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-small_trees</Tag>
+        <Type>Empty Text</Type>
+        <Description>Don't discard overly small trees</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasclassify_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Grid cell size for planar / non-planar analysis, default 2.0</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>1.50</Value>
+        <MaximumValue>10.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lasmerge_drop_withheld</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-drop_withheld</Tag>
+        <Type>Empty Text</Type>
+        <Description>Remove overlap points. Dont change</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lastile_cores</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-cores</Tag>
+        <Type>Integer number</Type>
+        <Description>Number of cores</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4</Value>
+        <MaximumValue>12</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lastile_tile_buffer</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-buffer</Tag>
+        <Type>Double precision number</Type>
+        <Description>Buffer for tiles</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>10.00</Value>
+        <MaximumValue>1000.00</MaximumValue>
+        <MinimumValue>1.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_lastile_tile_size</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-tile_size</Tag>
+        <Type>Double precision number</Type>
+        <Description>Output tile size</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>50.00</Value>
+        <MaximumValue>10000.00</MaximumValue>
+        <MinimumValue>5.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify buidings and high vegetation</Command>
+        <Code>bhv_temporal_path</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Empty base path for auxiliary temporal folders</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>C:/CursoCEDEX3D/CasosPracticos/ClasificacionEntornoUrbano/temp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Ellipsoid to orthometric height conversion</Command>
+        <Code>e2ohc_geoid_file</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ground_points</Tag>
+        <Type>File</Type>
+        <Description>LAZ Geoid heights file. Select from folder geoids_lastools</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>E:/dev/build/debug/geoids_lastools/EGM08_REDNAP_25830.laz</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_first_lasground_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0;12</Value>
+        <MaximumValue>31;31</MaximumValue>
+        <MinimumValue>0;0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_first_lasheight_classify_above</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_above</Tag>
+        <Type>Double precision numbers vector</Type>
+        <Description>Value and class, second value is an integer</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>-0.20;1.00</Value>
+        <MaximumValue>1000.00;31.00</MaximumValue>
+        <MinimumValue>-1000.00;0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_first_lasheight_classify_below</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_below</Tag>
+        <Type>Double precision numbers vector</Type>
+        <Description>Value and class, second value is an integer</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>-0.20;7.00</Value>
+        <MaximumValue>1000.00;31.00</MaximumValue>
+        <MinimumValue>-1000.00;0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_first_lasmerge_drop_withheld</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-drop_withheld</Tag>
+        <Type>Empty Text</Type>
+        <Description>Remove overlap points. Dont change</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_first_lasthin_classify_as</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_as</Tag>
+        <Type>Integer number</Type>
+        <Description>Target class</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>8</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_first_lasthin_percentile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-percentile</Tag>
+        <Type>Double precision numbers vector</Type>
+        <Description>Percentile</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>20.00;20.00</Value>
+        <MaximumValue>100.00;100.00</MaximumValue>
+        <MinimumValue>0.00;0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_first_lasthin_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative maximum distance between points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.90</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_las2las_keep_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Integer number</Type>
+        <Description>Class to preserve</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lasnoise_classify_as</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_as</Tag>
+        <Type>Integer number</Type>
+        <Description>Target class for noise points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>12</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lasnoise_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lasnoise_isolated</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-isolated</Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum number of points in areas around a point to find outliers</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3</Value>
+        <MaximumValue>1000</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lasnoise_step_xy</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step_xy</Tag>
+        <Type>Double precision number</Type>
+        <Description>Size 2D 3x3 areas around a point to find outliers</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>2.00</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lasnoise_step_z</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step_z</Tag>
+        <Type>Double precision number</Type>
+        <Description>Size of Z 3x3 areas around a point to find outliers</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.50</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lastile_cores</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-cores</Tag>
+        <Type>Integer number</Type>
+        <Description>Number of cores</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4</Value>
+        <MaximumValue>12</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lastile_tile_buffer</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-buffer</Tag>
+        <Type>Double precision number</Type>
+        <Description>Buffer for tiles</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>10.00</Value>
+        <MaximumValue>1000.00</MaximumValue>
+        <MinimumValue>1.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_lastile_tile_size</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-tile_size</Tag>
+        <Type>Double precision number</Type>
+        <Description>Output tile size</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>50.00</Value>
+        <MaximumValue>10000.00</MaximumValue>
+        <MinimumValue>5.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasground_bulge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-bulge</Tag>
+        <Type>Double precision number</Type>
+        <Description>Bulge parameter</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.10</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasground_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1;7</Value>
+        <MaximumValue>31;31</MaximumValue>
+        <MinimumValue>0;0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasground_town</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-town</Tag>
+        <Type>Empty Text</Type>
+        <Description>Type of surface for classification. Dont change</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasheight_classification</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classification</Tag>
+        <Type>Integer number</Type>
+        <Description>Class to use</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+        <MaximumValue>3</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasheight_drop_below</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-drop_below</Tag>
+        <Type>Double precision number</Type>
+        <Description>Remove points below this value</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasmerge_drop_withheld</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-drop_withheld</Tag>
+        <Type>Empty Text</Type>
+        <Description>Remove overlap points. Dont change</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasthin_classify_as</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_as</Tag>
+        <Type>Integer number</Type>
+        <Description>Target class</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>8</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasthin_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>7</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_second_lasthin_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative maximum distance between points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.25</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_temporal_path</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Empty base path for auxiliary temporal folders</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/PhotogrammetryToolsProjects/20210729_Tarazona_Cebolla/export/temp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_third_lasthin_amd</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative maximum distance between points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.50</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_third_lasthin_avt</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-adaptive</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative vertical tolerance</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>10.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Classify ground from photogrammetry</Command>
+        <Code>gfp_third_lasthin_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>7</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>las2dem64</Command>
+        <Code>las2dem_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>las2dem64</Command>
+        <Code>las2dem_classes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to use (separated by character ;), empty for all</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+    </Parameter>
+    <Parameter>
+        <Command>las2dem64</Command>
+        <Code>las2dem_nodata</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-nodata</Tag>
+        <Type>Integer number</Type>
+        <Description>Value for no data value</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>-9999</Value>
+        <MaximumValue>0</MaximumValue>
+        <MinimumValue>-99999</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>las2dem64</Command>
+        <Code>las2dem_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Grid size, spatial resolution, of DTM. 0.2 for uav lidar, 2.0 for PNOA-LIDAR</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.10</Value>
+        <MaximumValue>2.00</MaximumValue>
+        <MinimumValue>0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>lasboundary64</Command>
+        <Code>lasboundary_additional_switches</Code>
+        <Enabled>No</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasboundary64</Command>
+        <Code>lasboundary_bb</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-use_bb</Tag>
+        <Type>Empty Text</Type>
+        <Description>Use header bounding box instead of points to contruct an approximate polygon</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasboundary64</Command>
+        <Code>lasboundary_merge</Code>
+        <Enabled>No</Enabled>
+        <Tag>-merged</Tag>
+        <Type>Empty Text</Type>
+        <Description>Computes the boundaries of the merged points from all LAS/LAZ files</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_ignore_classes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to keep inside removing area, separated by a space</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_interior</Code>
+        <Enabled>No</Enabled>
+        <Tag>-interior</Tag>
+        <Type>Empty Text</Type>
+        <Description>To remove inside geometries</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_keep_classes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to keep outside removing area, separated by a space. Disabled for all</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_output_laz</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-olaz</Tag>
+        <Type>Empty Text</Type>
+        <Description>Output format is laz</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_shapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-poly</Tag>
+        <Type>File</Type>
+        <Description>Shapefile for clipping (Polygon)</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>C:/CursoCEDEX3D/CasosPracticos/LineaElectrica/roi_25830.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_shapefile_field_name</Code>
+        <Enabled>No</Enabled>
+        <Tag>-split</Tag>
+        <Type>Text</Type>
+        <Description>Clip a point cloud file for polygon in shapefile</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>name</Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasclip64</Command>
+        <Code>lasclip_verbose</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-v</Tag>
+        <Type>Empty Text</Type>
+        <Description>Report process information in console</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight_keep_classes</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to keep outside removing area, separated by a space. Disabled for all</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4 5</Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight_output_laz</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-olaz</Tag>
+        <Type>Empty Text</Type>
+        <Description>Output format is LAZ</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasheight64</Command>
+        <Code>lasheight_replace_z</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-replace_z</Tag>
+        <Type>Empty Text</Type>
+        <Description>Replace altitude with height over ground</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lasmerge64</Command>
+        <Code>lasmerge_additional_switches</Code>
+        <Enabled>No</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lasmerge64</Command>
+        <Code>lasmerge_keep_classes</Code>
+        <Enabled>No</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Text</Type>
+        <Description>Classes to keep outside removing area, separated by a space. Disabled for all</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile_additional_switches</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Any additional valid tool-specific switches, according to LAStools documentation</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile_buffer</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-buffer</Tag>
+        <Type>Double precision number</Type>
+        <Description>Buffer for tiles</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>10.00</Value>
+        <MaximumValue>1000.00</MaximumValue>
+        <MinimumValue>1.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile_cores</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-cores</Tag>
+        <Type>Integer number</Type>
+        <Description>Number of cores</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+        <MaximumValue>12</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile_flag_as_withheld</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-flag_as_withheld</Tag>
+        <Type>Empty Text</Type>
+        <Description>For drop easily buffer points</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile_output_laz</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-olaz</Tag>
+        <Type>Empty Text</Type>
+        <Description>Output format is laz</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile_set_classification</Code>
+        <Enabled>No</Enabled>
+        <Tag>-set_classification</Tag>
+        <Type>Integer number</Type>
+        <Description>Set classifications</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>lastile64</Command>
+        <Code>lastile_tile_size</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-tile_size</Tag>
+        <Type>Double precision number</Type>
+        <Description>Output tile size</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>100.00</Value>
+        <MaximumValue>10000.00</MaximumValue>
+        <MinimumValue>5.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasclip_first_shapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-poly</Tag>
+        <Type>File</Type>
+        <Description>First shapefile for clip</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Definicion_LAT/ROI_50m.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasclip_second_shapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-poly</Tag>
+        <Type>File</Type>
+        <Description>Second shapefile for clip. 25 m for PNOA-LIDAR</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Definicion_LAT/ROI_25m.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasclip_third_shapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-poly</Tag>
+        <Type>File</Type>
+        <Description>Third shapefile for clip</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Definicion_LAT/ROI_7_5m.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasground_cores</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-cores</Tag>
+        <Type>Integer number</Type>
+        <Description>Number of cores</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4</Value>
+        <MaximumValue>12</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasground_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Step for ground classification. 1.0 for uav lidar, 5 for PNOA-LIDAR</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>5.00</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.50</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasnoise_isolated</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-isolated</Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum number of points in areas around a point to find outliers</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>6</Value>
+        <MaximumValue>1000</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasnoise_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Size of 3x3x3 areas around a point to find outliers. Use 10 m for PNOA-LIDAR</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>10.00</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasthin_amd</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative maximum distance between points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>1.00</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasthin_avt</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-adaptive</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative vertical tolerance</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>10.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lasthin_step_out_powerline</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative vertical tolerance</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>10.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lastile_cores</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-cores</Tag>
+        <Type>Integer number</Type>
+        <Description>Number of cores</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4</Value>
+        <MaximumValue>12</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lastile_tile_buffer</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-buffer</Tag>
+        <Type>Double precision number</Type>
+        <Description>Buffer for tiles</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>10.00</Value>
+        <MaximumValue>1000.00</MaximumValue>
+        <MinimumValue>1.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_lastile_tile_size</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-tile_size</Tag>
+        <Type>Double precision number</Type>
+        <Description>Output tile size</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>100.00</Value>
+        <MaximumValue>10000.00</MaximumValue>
+        <MinimumValue>5.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Powerline preprocessing</Command>
+        <Code>pp_temporal_path</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Empty base path for auxiliary temporal folders</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>C:/uclm/Ejemplo_Zamora_1/Temp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_first_lasground_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0;12</Value>
+        <MaximumValue>31;31</MaximumValue>
+        <MinimumValue>0;0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_first_lasheight_classify_above</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_above</Tag>
+        <Type>Double precision numbers vector</Type>
+        <Description>Value and class, second value is an integer</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>-0.20;1.00</Value>
+        <MaximumValue>1000.00;31.00</MaximumValue>
+        <MinimumValue>-1000.00;0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_first_lasheight_classify_below</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_below</Tag>
+        <Type>Double precision numbers vector</Type>
+        <Description>Value and class, second value is an integer</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>-0.20;7.00</Value>
+        <MaximumValue>1000.00;31.00</MaximumValue>
+        <MinimumValue>-1000.00;0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_first_lasmerge_drop_withheld</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-drop_withheld</Tag>
+        <Type>Empty Text</Type>
+        <Description>Remove overlap points. Dont change</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_first_lasthin_classify_as</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_as</Tag>
+        <Type>Integer number</Type>
+        <Description>Target class</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>8</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_first_lasthin_percentile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-percentile</Tag>
+        <Type>Double precision numbers vector</Type>
+        <Description>Percentile</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>20.00;20.00</Value>
+        <MaximumValue>100.00;100.00</MaximumValue>
+        <MinimumValue>0.00;0.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_first_lasthin_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative maximum distance between points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.90</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_las2las_keep_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-keep_class</Tag>
+        <Type>Integer number</Type>
+        <Description>Class to preserve</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lasnoise_classify_as</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_as</Tag>
+        <Type>Integer number</Type>
+        <Description>Target class for noise points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>12</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lasnoise_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lasnoise_isolated</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-isolated</Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum number of points in areas around a point to find outliers</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3</Value>
+        <MaximumValue>1000</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lasnoise_step_xy</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step_xy</Tag>
+        <Type>Double precision number</Type>
+        <Description>Size 2D 3x3 areas around a point to find outliers</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>2.00</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lasnoise_step_z</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step_z</Tag>
+        <Type>Double precision number</Type>
+        <Description>Size of Z 3x3 areas around a point to find outliers</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.50</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lastile_cores</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-cores</Tag>
+        <Type>Integer number</Type>
+        <Description>Number of cores</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4</Value>
+        <MaximumValue>12</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lastile_tile_buffer</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-buffer</Tag>
+        <Type>Double precision number</Type>
+        <Description>Buffer for tiles</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>10.00</Value>
+        <MaximumValue>1000.00</MaximumValue>
+        <MinimumValue>1.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_lastile_tile_size</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-tile_size</Tag>
+        <Type>Double precision number</Type>
+        <Description>Output tile size</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>50.00</Value>
+        <MaximumValue>10000.00</MaximumValue>
+        <MinimumValue>5.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasground_bulge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-bulge</Tag>
+        <Type>Double precision number</Type>
+        <Description>Bulge parameter</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.10</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasground_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1;7</Value>
+        <MaximumValue>31;31</MaximumValue>
+        <MinimumValue>0;0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasground_town</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-town</Tag>
+        <Type>Empty Text</Type>
+        <Description>Type of surface for classification. Dont change</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasheight_classification</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classification</Tag>
+        <Type>Integer number</Type>
+        <Description>Class to use</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+        <MaximumValue>3</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasheight_drop_below</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-drop_below</Tag>
+        <Type>Double precision number</Type>
+        <Description>Remove points below this value</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasmerge_drop_withheld</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-drop_withheld</Tag>
+        <Type>Empty Text</Type>
+        <Description>Remove overlap points. Dont change</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasthin_classify_as</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-classify_as</Tag>
+        <Type>Integer number</Type>
+        <Description>Target class</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>8</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasthin_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>7</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_second_lasthin_step</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-step</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative maximum distance between points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.25</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_temporal_path</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Empty base path for auxiliary temporal folders</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>X:/tical/temp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_third_lasthin_amd</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative maximum distance between points</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.50</Value>
+        <MaximumValue>100.00</MaximumValue>
+        <MinimumValue>0.10</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_third_lasthin_avt</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-adaptive</Tag>
+        <Type>Double precision number</Type>
+        <Description>Adaptative vertical tolerance</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>10.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>SolarPark preprocessing</Command>
+        <Code>sp_third_lasthin_ignore_class</Code>
+        <Enabled>Yes</Enabled>
+        <Tag>-ignore_class</Tag>
+        <Type>Integer numbers vector</Type>
+        <Description>Classes to ignore</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>7</Value>
+        <MaximumValue>31</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+</ParametersManager>

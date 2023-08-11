@@ -1,0 +1,53 @@
+<!DOCTYPE ParametersManager>
+<ParametersManager version="1.1">
+    <Parameter>
+        <Command>vegetation_growth_estimate</Command>
+        <Code>vge_MultiProcess</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use multi process</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>vegetation_growth_estimate</Command>
+        <Code>vge_epsg_code</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Input and output EPSG code</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>25830</Value>
+        <MaximumValue>1000000</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>vegetation_growth_estimate</Command>
+        <Code>vge_spatial_resolution</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Spatial resolution for analysis, integer in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>10</Value>
+        <MaximumValue>100</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>vegetation_growth_estimate</Command>
+        <Code>vge_update_existing_model</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Update existing model in output file</Description>
+        <PrintSize>5</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+</ParametersManager>

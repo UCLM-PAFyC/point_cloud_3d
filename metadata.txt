@@ -9,7 +9,7 @@
 [general]
 name=Point Cloud 3D
 qgisMinimumVersion=3.4
-# qgisMaximumVersion=3.16.4
+#qgisMaximumVersion=3.26.3
 description=QGIS plugin to integrate Point Clouds from LIDAR or Photogrammetry
 version=0.9.1
 author=David Hernandez Lopez
